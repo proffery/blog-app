@@ -6,6 +6,17 @@
     padding: .5rem;
 }
 
-p {
-    margin: 0 .5rem 0 .5rem;
+.register {
+    margin: 0 .5rem 0 0;
+    font-size: calc(var(--main-font) - .5rem);
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+em {
+    margin-right: .3rem;
 }

@@ -21,11 +21,13 @@ const UserBar = (prop) => {
         {signInStatus ? (
           <Logout prop={prop.prop} authStateChanged={authStateChanged}/> 
         ):(
-            <>
+            <div className={styles.group}>
               <Login prop={prop.prop} authStateChanged={authStateChanged}/>
-              <p>or</p>
-              <NavLink to='/register'>Register</NavLink>
-            </>
+              <div className={styles.register}> 
+                <em>Don’t have an account? Register</em>
+                <NavLink to='/register'>here</NavLink>
+              </div>
+            </div>
           )
         }
       </div>
