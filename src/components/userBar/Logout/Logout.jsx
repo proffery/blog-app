@@ -31,9 +31,9 @@ const Logout = (prop) => {
 
     return (
         <div className={styles.userContainer}>
-              <div className={styles.userInfo}>
+              <div className={styles.userInfo}>Logged in as:
                 <img className={styles.userImg} src={getProfilePicUrl()} alt='User photo' />
-                <p>{getUserName()}</p>
+                <div className={styles.userName}>{getUserName()}</div>
                 <button onClick={signOutUser}>Exit</button>
               </div>
         </div>

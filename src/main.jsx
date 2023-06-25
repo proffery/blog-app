@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './main.css'
-import UserBar from './user/UserBar/UserBar.jsx'
+import UserBar from './components/userBar/UserBar/UserBar.jsx'
 import { getFirebaseConfig } from '../src/Firebase/config'
 import { initializeApp } from 'firebase/app'
 import {

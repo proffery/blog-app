@@ -9,10 +9,16 @@
     align-items: center;
     justify-content: right;
 }
-  
+
+.userName {
+    display: flex;
+    margin: .5rem;
+    font-weight: 800;
+}
+
 .userImg {
-    margin-right: .5rem;
     margin-left: .5rem;
-    width: 2rem;
-    height: 2rem;
+    width: var(--main-font);
+    height: auto;
+    border-radius: 2rem;
 }

@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import styles from './Login.module.css'
 import {
     getAuth,
@@ -22,9 +22,13 @@ const Login = (prop) => {
       .then(setSignInStatus(!!getAuth().currentUser))
   }
 
+  const loginWithEmailAndPassword = (e) => {
+    e.preventDefault()
+  }
+
   return (
     <div className={styles.container}>
-      <form className={styles.form} onSubmit={e => e.preventDefault()}>
+      <form className={styles.form} onSubmit={loginWithEmailAndPassword}>
         <div className={styles.group}>
           <label htmlFor="login-username">Username:</label>
           <input type="text" id="login-username" name="login-username"/>
@@ -33,9 +37,11 @@ const Login = (prop) => {
           <label htmlFor="login-password">Password</label>
           <input type="password" id="login-password" name="login-password" />
         </div>
-        <button type="submit">Log in</button>
+        <div className={styles.group}>
+          <button type="submit">Log in</button>
+        </div>
       </form>
-      <button onClick={signIn}>Sign in Google</button>
+      <button onClick={signIn}>Log in Google</button>
     </div>
   )
 }
