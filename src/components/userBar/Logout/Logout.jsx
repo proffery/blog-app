@@ -9,7 +9,6 @@ const Logout = (prop) => {
 
     const [signInStatus, setSignInStatus] = useState(prop.prop === null ? false : !!prop.prop.auth.currentUser)
 
-    console.log(prop)
     useEffect(() => {
         prop.authStateChanged()
     }, [signInStatus])

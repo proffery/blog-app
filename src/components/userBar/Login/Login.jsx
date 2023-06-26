@@ -28,28 +28,32 @@ const Login = (prop) => {
   const emailHandle = (e) => {
     e.preventDefault()
     setEmail(e.target.value)
-}
+  }
 
-const passwordHandle = (e) => {
-    e.preventDefault()
-    setPassword(e.target.value)
-}
+  const passwordHandle = (e) => {
+      e.preventDefault()
+      setPassword(e.target.value)
+  }
 
   const loginWithEmailAndPassword = (e) => {
     e.preventDefault()
     const auth = getAuth()
-signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
     // Signed in 
     const user = userCredential.user
     // ...
   })
   .catch((error) => {
     const errorCode = error.code
-    const errorMessage = error.message
+    showError('Error: ' + errorCode)
   })
   }
 
+  const showError = (msg) => {
+    prop.showError(msg)
+  }
+  
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={loginWithEmailAndPassword}>

@@ -10,9 +10,17 @@ const UserBar = (prop) => {
 
   // eslint-disable-next-line no-unused-vars
   const [signInStatus, setSignInStatus] = useState(prop.prop === null ? false : !!prop.prop.auth.currentUser)
+  const [errorWindow, setErrorWindow] = useState('hidden')
+  const [errorMsg, setErrorMsg] = useState('')
 
   const authStateChanged = () => {
     prop.authStateChanged()
+  }
+
+  const showError = (msg) => {
+    setErrorWindow('visible')
+    setErrorMsg(msg)
+    setTimeout(() => setErrorWindow('hidden'), 2000)
   }
 
   return (
@@ -22,7 +30,7 @@ const UserBar = (prop) => {
           <Logout prop={prop.prop} authStateChanged={authStateChanged}/> 
         ):(
             <div className={styles.group}>
-              <Login prop={prop.prop} authStateChanged={authStateChanged}/>
+              <Login prop={prop.prop} authStateChanged={authStateChanged} showError={showError}/>
               <div className={styles.register}> 
                 <em>Don’t have an account? Register</em>
                 <NavLink to='/register'>here</NavLink>
@@ -30,10 +38,15 @@ const UserBar = (prop) => {
             </div>
           )
         }
+        <div className={styles.error} style={{
+          visibility: errorWindow,
+          }}>
+          {errorMsg}
+        </div>
       </div>
       <Routes>
         {!signInStatus && 
-          <Route path='/register' element={<Register />} />
+          <Route path='/register' element={<Register showError={showError}/>} />
         }
         <Route path='*' element={<NotFound />} />
       </Routes>

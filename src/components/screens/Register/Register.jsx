@@ -2,7 +2,7 @@ import styles from './Register.module.css'
 import { useState } from 'react'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-const Register = () => {
+const Register = (prop) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -25,18 +25,27 @@ const Register = () => {
 
     const registerSubmitHamdle = (e) => {
         e.preventDefault()
-        const auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user
-            // ...
-        })
-        .catch((error) => {
-            const errorCode = error.code
-            const errorMessage = error.message
-            // ..
-        })
+        if(password !== passwordRepeat) {
+            showError('Error: password are not matching')
+        }
+
+        else {
+            const auth = getAuth();
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code
+                showError('Error: ' + errorCode)
+            })
+        }
+    }
+
+    const showError = (msg) => {
+        prop.showError(msg)
     }
 
     return (
