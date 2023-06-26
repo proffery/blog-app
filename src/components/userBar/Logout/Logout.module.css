@@ -1,5 +1,6 @@
 .container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -22,4 +23,9 @@
     width: var(--main-font);
     height: auto;
     border-radius: 2rem;
+}
+
+.createPost {
+    margin: 0 .5rem 0 0;
+    font-size: calc(var(--main-font) - .5rem);
 }

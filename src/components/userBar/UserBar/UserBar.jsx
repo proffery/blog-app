@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { HashRouter, Routes, Route, NavLink } from 'react-router-dom'
 import styles from './UserBar.module.css'
 import Login from "../Login/Login"

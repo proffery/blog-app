@@ -1,5 +1,6 @@
 import styles from './Logout.module.css'
 import { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 import {
     getAuth,
     signOut,
@@ -38,9 +39,6 @@ const Logout = (prop) => {
 
     return (
         <div className={styles.container}>
-            {isAdmin &&
-                <div>Admin</div>
-            }
             <div className={styles.userContainer}>
                 <div className={styles.userInfo}>Logged as:
                     <img className={styles.userImg} src={getProfilePicUrl()} alt='User photo' />
@@ -48,6 +46,12 @@ const Logout = (prop) => {
                     <button onClick={signOutUser}>Exit</button>
                 </div>
             </div>
+            {isAdmin &&
+                <div className={styles.createPost}> 
+                    <em>You are logged as administrator. Create new</em>
+                    <NavLink to='/newpost'>post</NavLink>
+                </div>
+            }
         </div>
     )
 }
