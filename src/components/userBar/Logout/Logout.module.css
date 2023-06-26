@@ -12,12 +12,13 @@
 
 .userName {
     display: flex;
-    margin: .5rem;
+    align-items: center;
+    margin: .3rem;
     font-weight: 800;
 }
 
 .userImg {
-    margin-left: .5rem;
+    margin-left: .3rem;
     width: var(--main-font);
     height: auto;
     border-radius: 2rem;

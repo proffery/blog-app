@@ -39,11 +39,12 @@ const Login = (prop) => {
     e.preventDefault()
     const auth = getAuth()
     signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user
-    // ...
-  })
+  //   .then((userCredential) => {
+  //   // Signed in 
+  //   const user = userCredential.user
+  //   console.log('Logged as: ' + user.email )
+  //   // ...
+  // })
   .catch((error) => {
     const errorCode = error.code
     showError('Error: ' + errorCode)

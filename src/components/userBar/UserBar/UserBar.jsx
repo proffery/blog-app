@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { HashRouter, Routes, Route, NavLink } from 'react-router-dom'
 import styles from './UserBar.module.css'
 import Login from "../Login/Login"
@@ -12,6 +12,12 @@ const UserBar = (prop) => {
   const [signInStatus, setSignInStatus] = useState(prop.prop === null ? false : !!prop.prop.auth.currentUser)
   const [errorWindow, setErrorWindow] = useState('hidden')
   const [errorMsg, setErrorMsg] = useState('')
+  
+
+  // useEffect(() => {
+  //   prop.prop === null ? setIsAdmin(false) : (prop.prop.auth.currentUser.email === getAdminEmail() ? setIsAdmin(true) : setIsAdmin(false))
+  //   console.log(prop.prop.currentUser.email)
+  // }, [])
 
   const authStateChanged = () => {
     prop.authStateChanged()

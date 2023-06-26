@@ -4,19 +4,26 @@ import {
     getAuth,
     signOut,
 } from 'firebase/auth'
+import { doc, getDoc, getFirestore} from "firebase/firestore"
 
 const Logout = (prop) => {
 
     const [signInStatus, setSignInStatus] = useState(prop.prop === null ? false : !!prop.prop.auth.currentUser)
+    const [isAdmin, setIsAdmin] = useState(false)
 
     useEffect(() => {
+        getAdminEmail().then((email) => {email === getUserEmail() ? setIsAdmin(true) : setIsAdmin(false)})
         prop.authStateChanged()
     }, [signInStatus])
 
     function getUserEmail() {
         // Return the user's display email.
-        return getAuth().currentUser.email;
+        return getAuth().currentUser.email
     }
+
+    const getAdminEmail = async() => {    
+        return (await getDoc(doc(getFirestore(), 'admin', 'email'))).data().email
+      }
 
     async function signOutUser() {
         // Sign out of Firebase.
@@ -26,16 +33,21 @@ const Logout = (prop) => {
 
     function getProfilePicUrl() {
         // Return the user's profile pic URL.
-        return getAuth().currentUser.photoURL ||'/public/img/at.svg';
+        return getAuth().currentUser.photoURL ||'/img/account-outline.svg';
     }
 
     return (
-        <div className={styles.userContainer}>
-              <div className={styles.userInfo}>Logged as:
-                <img className={styles.userImg} src={getProfilePicUrl()} alt='User photo' />
-                <div className={styles.userName}>{getUserEmail()}</div>
-                <button onClick={signOutUser}>Exit</button>
-              </div>
+        <div className={styles.container}>
+            {isAdmin &&
+                <div>Admin</div>
+            }
+            <div className={styles.userContainer}>
+                <div className={styles.userInfo}>Logged as:
+                    <img className={styles.userImg} src={getProfilePicUrl()} alt='User photo' />
+                    <div className={styles.userName}>{getUserEmail()}</div>
+                    <button onClick={signOutUser}>Exit</button>
+                </div>
+            </div>
         </div>
     )
 }
