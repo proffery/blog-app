@@ -5,37 +5,40 @@ import {
     getAuth,
     signOut,
 } from 'firebase/auth'
-import { doc, getDoc, getFirestore} from "firebase/firestore"
+//COMMENTED FOR DEMO MODE! uncomment for switch off DEMO!
+//import { doc, getDoc, getFirestore} from "firebase/firestore"
 
 const Logout = (prop) => {
-
+    
     const [signInStatus, setSignInStatus] = useState(prop.prop === null ? false : !!prop.prop.auth.currentUser)
-    const [isAdmin, setIsAdmin] = useState(false)
-
+    //COMMENTED FOR DEMO MODE! uncomment for switch off DEMO!
+    //const [isAdmin, setIsAdmin] = useState(false)
+    
     useEffect(() => {
-        getAdminEmail().then((email) => {email === getUserEmail() ? setIsAdmin(true) : setIsAdmin(false)})
+        //COMMENTED FOR DEMO MODE!
+        //getAdminEmail().then((email) => {email === getUserEmail() ? setIsAdmin(true) : setIsAdmin(false)})
         prop.authStateChanged()
     }, [signInStatus])
-
+    
     function getUserEmail() {
-        // Return the user's display email.
         return getAuth().currentUser.email
     }
-
-    const getAdminEmail = async() => {    
-        return (await getDoc(doc(getFirestore(), 'admin', 'email'))).data().email
-      }
-
+    //COMMENTED FOR DEMO MODE! uncomment for switch off DEMO! Code bellow get admin email from DB.
+    // const getAdminEmail = async() => {    
+    //     return (await getDoc(doc(getFirestore(), 'admin', 'email'))).data().email
+    // }
+    
     async function signOutUser() {
         // Sign out of Firebase.
         await signOut(getAuth())
         .then(setSignInStatus(!!getAuth().currentUser))
     }
-
+    
     function getProfilePicUrl() {
         // Return the user's profile pic URL.
         return getAuth().currentUser.photoURL ||'/img/account-outline.svg';
     }
+
 
     return (
         <div className={styles.container}>
@@ -46,7 +49,8 @@ const Logout = (prop) => {
                     <button onClick={signOutUser}>Exit</button>
                 </div>
             </div>
-            {isAdmin &&
+            {/* //COMMENTED FOR DEMO MODE! Del or comment "prop.isAdmin" and uncomment isAdmin for switch off DEMO!*/}
+            {prop.isAdmin /*isAdmin*/ &&
                 <div className={styles.createPost}> 
                     <em>You are logged as administrator. Create new</em>
                     <NavLink to='/newpost'>post</NavLink>

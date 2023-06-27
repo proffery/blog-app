@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    margin: .5rem;
+}
+
+.title, .author {
+    display: flex;
+    max-width: 50vw;
+}
+
+.post {
+    display: flex;
+    min-height: 10vh;
+    width:  min(50vw, 25rem);
+    resize: vertical;
+}
+
+.send {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem;
+}
