@@ -4,6 +4,10 @@
     justify-content: center;
 }
 
+.direction {
+    display: flex;
+}
+
 .group {
    display: flex;
    flex-direction: column;
@@ -14,11 +18,28 @@
 
 .form {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: baseline;
 }
 
-input {
-    margin-bottom: .5rem;
+.loginText {
+    display: flex;
+}
+
+.loginSymbol {
+    display: none;
+    width: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+    .loginText {
+        display: none;
+    }
+    
+    .loginSymbol {
+        display: flex;
+    }
+    .direction {
+        flex-direction: column;
+    }
 }

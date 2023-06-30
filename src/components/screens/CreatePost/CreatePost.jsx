@@ -1,14 +1,27 @@
 import styles from './CreatePost.module.css'
 import { useState } from 'react'
+import { useNavigate } from "react-router-dom"
+import {
+    getAuth
+} from 'firebase/auth'
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp,
+} from 'firebase/firestore'
 
 const CreatePost = (user) => {
     // eslint-disable-next-line no-unused-vars
-    const [author, setAuthor] = useState(user.user)
+    const [author, setAuthor] = useState(user.user.email)
     const [title, setTitle] = useState('')
     const [post, setPost] = useState('')
+    const navigate = useNavigate();
 
     const createPost = (e) => {
         e.preventDefault()
+        savePost(author ,title, post)
+        navigate('/postlist')
     }
 
     const handleTitle = (e) => {
@@ -19,6 +32,27 @@ const CreatePost = (user) => {
     const handlePost = (e) => {
         e.preventDefault()
         setPost(e.target.value)
+    }
+    
+    function getProfilePicUrl() {
+        // Return the user's profile pic URL.
+        return getAuth().currentUser.photoURL ||'/img/account-outline.svg'
+    }
+
+    async function savePost(authorName, titleText, postText) {
+        //Push a new post to Cloud Firestore.
+        try {
+          await addDoc(collection(getFirestore(), 'posts'), {
+            name: authorName,
+            title: titleText,
+            text: postText,
+            profilePicUrl: getProfilePicUrl(),
+            timestamp: serverTimestamp()
+          })
+        }
+        catch(error) {
+          console.error('Error writing new post to Firebase Database', error)
+        }
     }
 
     return (

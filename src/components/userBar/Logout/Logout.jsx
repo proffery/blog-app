@@ -1,10 +1,11 @@
 import styles from './Logout.module.css'
 import { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
     getAuth,
     signOut,
 } from 'firebase/auth'
+
 //COMMENTED FOR DEMO MODE! uncomment for switch off DEMO!
 //import { doc, getDoc, getFirestore} from "firebase/firestore"
 
@@ -43,7 +44,7 @@ const Logout = (prop) => {
     return (
         <div className={styles.container}>
             <div className={styles.userContainer}>
-                <div className={styles.userInfo}>Logged as:
+                <div className={styles.userInfo}>Logged:
                     <img className={styles.userImg} src={getProfilePicUrl()} alt='User photo' />
                     <div className={styles.userName}>{getUserEmail()}</div>
                     <button onClick={signOutUser}>Exit</button>
@@ -51,9 +52,8 @@ const Logout = (prop) => {
             </div>
             {/* //COMMENTED FOR DEMO MODE! Del or comment "prop.isAdmin" and uncomment isAdmin for switch off DEMO!*/}
             {prop.isAdmin /*isAdmin*/ &&
-                <div className={styles.createPost}> 
-                    <em>You are logged as administrator. Create new</em>
-                    <NavLink to='/newpost'>post</NavLink>
+                <div className={styles.createPost}>You are logged as administrator. Create new
+                    <Link to='/newpost'> post</Link>
                 </div>
             }
         </div>

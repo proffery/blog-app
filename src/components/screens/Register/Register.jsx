@@ -1,12 +1,14 @@
 import styles from './Register.module.css'
 import { useState } from 'react'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom"
 
 const Register = (prop) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordRepeat, setPasswordRepeat] = useState('')
+    const navigate = useNavigate();
 
     const emailHandle = (e) => {
         e.preventDefault()
@@ -34,9 +36,12 @@ const Register = (prop) => {
             createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in 
+                // eslint-disable-next-line no-unused-vars
                 const user = userCredential.user
                 // ...
             })
+            .then(navigate('/'))
+            
             .catch((error) => {
                 const errorCode = error.code
                 showError('Error: ' + errorCode)
