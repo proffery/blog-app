@@ -42,7 +42,7 @@ const Login = (prop) => {
     e.preventDefault()
     const auth = getAuth()
     signInWithEmailAndPassword(auth, email, password)
-    navigate('/postlist')
+    navigate('/')
   //   .then((userCredential) => {
   //   // Signed in 
   //   const user = userCredential.user

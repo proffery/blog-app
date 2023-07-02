@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    /* border: 1px dotted; */
+    box-shadow: var(--shadow);
+    border-radius: .5rem;
+    padding: 0 1rem 1rem 1rem;
+}
+
+.title {
+    display: flex;
+    align-self: flex-start;
+}
+
+.content {
+    align-self: flex-start;
+}
+
+.content::first-letter {
+    font-size: calc(var(--main-font) + .4rem);
+    font-weight: 900;
+    text-decoration:double;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    align-self: flex-end;
+    justify-content: left;
+    font-size: calc(var(--main-font) - .5rem);
+
+}
+
+.userName {
+    display: flex;
+    align-items: center;
+    margin-right: .3rem;
+    color: var(--ten-percent-color);
+}
+
+.userImg {
+    margin-left: .3rem;
+    width: var(--main-font);
+    height: auto;
+    border-radius: 2rem;
+}

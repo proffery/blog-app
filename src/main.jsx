@@ -9,6 +9,15 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth'
 
+import {
+  getFirestore,
+  collection,
+  query,
+  orderBy,
+  limit,
+  getDocs
+} from 'firebase/firestore'
+
 function initFirebaseAuth() {
   // Subscribe to the user's signed-in status
   onAuthStateChanged(getAuth(), authStateObserver);
@@ -19,6 +28,7 @@ const authStateChanged = () => {
 }
 
 async function authStateObserver(user) {
+  const loadedData = await loadData()
   let currentUser
   if (user) {
     currentUser = user
@@ -30,12 +40,21 @@ async function authStateObserver(user) {
 
   ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-      <UserBar prop={currentUser} authStateChanged={authStateChanged}/>
+      <UserBar user={currentUser} posts={loadedData} authStateChanged={authStateChanged}/>
     </React.StrictMode>
   )
 }
 
 
+async function loadData() {
+  let loadedData = []
+  const q = query(collection(getFirestore(), 'posts'), orderBy('timestamp', 'desc'), limit(12))
+  const querySnapshot = await getDocs(q)
+  querySnapshot.forEach((doc) => {
+    loadedData.push(doc.data())
+  })
+  return loadedData
+}
 
 const firebaseAppConfig = getFirebaseConfig()
 initializeApp(firebaseAppConfig)

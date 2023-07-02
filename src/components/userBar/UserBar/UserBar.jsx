@@ -8,11 +8,12 @@ import Register from "../../screens/Register/Register"
 import NotFound from "../../screens/NotFound/NotFound"
 import CreatePost from "../../screens/CreatePost/CreatePost"
 import Fade from 'react-reveal/Fade'
+import { PostList } from "../../screens/PostList/PostList"
 
 const UserBar = (prop) => {
-
+//console.log(prop.posts)
   // eslint-disable-next-line no-unused-vars
-  const [signInStatus, setSignInStatus] = useState(prop.prop === null ? false : !!prop.prop.auth.currentUser)
+  const [signInStatus, setSignInStatus] = useState(prop.user === null ? false : !!prop.user.auth.currentUser)
   const [errorWindow, setErrorWindow] = useState('hidden')
   const [errorMsg, setErrorMsg] = useState('')
   const [isAdmin, setIsAdmin] = useState(false)
@@ -46,7 +47,7 @@ const UserBar = (prop) => {
         {signInStatus ? (
           <Fade top when={userBarClass === 'userBarActive'}>
             <div className={styles.logout + ' ' + userBarClass}>
-              <Logout prop={prop.prop} isAdmin={isAdmin} authStateChanged={authStateChanged}/> 
+              <Logout prop={prop.user} isAdmin={isAdmin} authStateChanged={authStateChanged}/> 
               {/* DEMO MODE START!!! Del or comment for switch off DEMO! */}
               <div className={styles.demo}>
                 <div>DEMO</div>
@@ -61,7 +62,7 @@ const UserBar = (prop) => {
           ):(
             <Fade top when={userBarClass === 'userBarActive'}>
               <div className={styles.login + ' ' + userBarClass}>
-                <Login prop={prop.prop} authStateChanged={authStateChanged} showError={showError}/>
+                <Login prop={prop.user} authStateChanged={authStateChanged} showError={showError}/>
                 <div className={styles.register}> 
                   <em>Don’t have an account? Register</em>
                   <NavLink to='/register'>here</NavLink>
@@ -97,7 +98,7 @@ const UserBar = (prop) => {
               <div className={styles.userStatus} onClick={openCloseUser}>
                 <img src='/img/account-details-outline.svg' alt="User slider" className={styles.userSlider} ></img>
                 {signInStatus && 
-                <div className={styles.userEmail}>{prop.prop.email}</div>
+                <div className={styles.userEmail}>{prop.user.email}</div>
                 }
               </div>
             </li>
@@ -105,14 +106,13 @@ const UserBar = (prop) => {
         </nav>
       </div>
       <Routes>
-      <Route path='/' element={<div>postList</div>} />
-      <Route path='/postlist' element={<div>postList</div>} />
+      <Route path='/' element={<PostList posts={prop.posts}/>} />
       <Route path='/post:id' element={<div>Post</div>} />
         {!signInStatus ? 
           <Route path='/register' element={<Register showError={showError}/>} /> :
           (isAdmin && 
           <>
-            <Route path='/newpost' element={<CreatePost user={prop.prop.auth.currentUser} showError={showError}/>} />
+            <Route path='/newpost' element={<CreatePost user={prop.user.auth.currentUser} showError={showError}/>} />
           </>
           )
         }

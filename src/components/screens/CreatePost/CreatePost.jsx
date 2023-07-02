@@ -21,7 +21,7 @@ const CreatePost = (user) => {
     const createPost = (e) => {
         e.preventDefault()
         savePost(author ,title, post)
-        navigate('/postlist')
+        navigate('/')
     }
 
     const handleTitle = (e) => {
@@ -43,7 +43,7 @@ const CreatePost = (user) => {
         //Push a new post to Cloud Firestore.
         try {
           await addDoc(collection(getFirestore(), 'posts'), {
-            name: authorName,
+            author: authorName,
             title: titleText,
             text: postText,
             profilePicUrl: getProfilePicUrl(),
