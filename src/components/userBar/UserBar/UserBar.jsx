@@ -19,7 +19,7 @@ const UserBar = (prop) => {
   const [isAdmin, setIsAdmin] = useState(false)
   const [userBarClass, setUserBarClass] = useState('userBarHidden')
   const [linksClass, setLinksClass] = useState('linksHidden')
-
+  
   const authStateChanged = () => {
     prop.authStateChanged()
   }
@@ -35,11 +35,18 @@ const UserBar = (prop) => {
     linksClass === 'linksHidden' ? setLinksClass('linksActive') : setLinksClass('linksHidden')
   }
 
+  const deletePost = (id) => {
+    prop.deletePost(id)
+  }
   //DEMO MODE START!!!! Del or comment for switch off DEMO!
   const sliderChange = () => {
     isAdmin ? setIsAdmin(false) : setIsAdmin(true)
   }
   //DEMO MODE END!!!
+
+  const refreshPage = () => {
+    prop.refreshPage()
+  }
 
   return (
     <HashRouter>
@@ -48,15 +55,6 @@ const UserBar = (prop) => {
           <Fade top when={userBarClass === 'userBarActive'}>
             <div className={styles.logout + ' ' + userBarClass}>
               <Logout prop={prop.user} isAdmin={isAdmin} authStateChanged={authStateChanged}/> 
-              {/* DEMO MODE START!!! Del or comment for switch off DEMO! */}
-              <div className={styles.demo}>
-                <div>DEMO</div>
-                <label className={styles.switch}>
-                <input className={styles.slider + '-input'} id='demo' type="checkbox" checked={isAdmin} onChange={sliderChange}/>
-                <span className={styles.slider + ' ' + styles.round}></span>
-                </label>
-              </div>
-              {/* DEMO MODE END!!! */}
             </div>
           </Fade>
           ):(
@@ -91,28 +89,34 @@ const UserBar = (prop) => {
             } */}
             {isAdmin && 
               <li>
-                <NavLink to='/newpost'>NewPost</NavLink>
+                <NavLink to='/newpost'>New</NavLink>
               </li>
             }
-            <li>
-              <div className={styles.userStatus} onClick={openCloseUser}>
-                <img src='/img/account-details-outline.svg' alt="User slider" className={styles.userSlider} ></img>
-                {signInStatus && 
-                <div className={styles.userEmail}>{prop.user.email}</div>
-                }
-              </div>
-            </li>
+            {/* DEMO MODE START!!! Del or comment for switch off DEMO! */}
+            {signInStatus &&
+              <li className={styles.demo}>
+                <label className="demo" htmlFor='demo'>DEMO</label>
+                <label className={styles.switch}>
+                <input className={styles.slider + '-input'} id='demo' type="checkbox" checked={isAdmin} onChange={sliderChange}/>
+                <span className={styles.slider + ' ' + styles.round}></span>
+                </label>
+              </li>
+            }
+          {/* DEMO MODE END!!! */}
           </ul>
+              <button className={styles.userStatus} onClick={openCloseUser}>
+                <img src='/img/account-details-outline.svg' alt="User slider" className={styles.userSlider} ></img>
+              </button>
         </nav>
       </div>
       <Routes>
-      <Route path='/' element={<PostList posts={prop.posts}/>} />
+      <Route path='/' element={<PostList posts={prop.posts} deletePost={deletePost} refreshPage={refreshPage}/>} />
       <Route path='/post:id' element={<div>Post</div>} />
         {!signInStatus ? 
           <Route path='/register' element={<Register showError={showError}/>} /> :
           (isAdmin && 
           <>
-            <Route path='/newpost' element={<CreatePost user={prop.user.auth.currentUser} showError={showError}/>} />
+            <Route path='/newpost' element={<CreatePost refreshPage={refreshPage} user={prop.user.auth.currentUser} showError={showError}/>} />
           </>
           )
         }

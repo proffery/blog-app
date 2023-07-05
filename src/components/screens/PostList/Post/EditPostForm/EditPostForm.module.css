@@ -1,0 +1,26 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--background-color-main);
+    box-shadow: var(--shadow);
+    padding: 1rem;
+    border: 1px solid;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: .5rem;
+    text-align: left;
+    width: clamp(200px, 25rem, 80vw); 
+    padding: .5rem;
+}
+
+.header {
+    display: flex;
+    align-self: center;
+}

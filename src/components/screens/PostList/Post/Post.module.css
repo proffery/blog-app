@@ -5,7 +5,6 @@
     text-align: left;
     /* border: 1px dotted; */
     box-shadow: var(--shadow);
-    border-radius: .5rem;
     padding: 0 1rem 1rem 1rem;
 }
 
@@ -46,3 +45,10 @@
     height: auto;
     border-radius: 2rem;
 }
+
+.options {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+}
+

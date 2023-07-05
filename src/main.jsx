@@ -14,8 +14,9 @@ import {
   collection,
   query,
   orderBy,
-  limit,
-  getDocs
+  getDocs,
+  deleteDoc,
+  doc
 } from 'firebase/firestore'
 
 function initFirebaseAuth() {
@@ -40,20 +41,35 @@ async function authStateObserver(user) {
 
   ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-      <UserBar user={currentUser} posts={loadedData} authStateChanged={authStateChanged}/>
+      <UserBar user={currentUser} posts={loadedData} authStateChanged={authStateChanged} deletePost={deletePost} refreshPage={refreshPage}/>
     </React.StrictMode>
   )
 }
 
+const deletePost = async(id) => {
+  console.log(id)
+  const db = getFirestore()
+  const docRef = doc(db, "posts", id)
+  deleteDoc(docRef).then(() => { loadData() })
+    .catch(error => { console.log(error) 
+  })
+}
 
 async function loadData() {
   let loadedData = []
-  const q = query(collection(getFirestore(), 'posts'), orderBy('timestamp', 'desc'), limit(12))
+  const q = query(collection(getFirestore(), 'posts'), orderBy('timestamp', 'desc'))
   const querySnapshot = await getDocs(q)
   querySnapshot.forEach((doc) => {
     loadedData.push(doc.data())
   })
   return loadedData
+}
+
+const refreshPage = () => {
+  const timer = setTimeout(() => {
+      window.location.reload(true)
+    }, 1000);
+    return () => clearTimeout(timer);
 }
 
 const firebaseAppConfig = getFirebaseConfig()

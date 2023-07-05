@@ -11,9 +11,9 @@
   --main-font: clamp(16px, calc(16px + (28 - 16) * ((100vw - 360px) / 1560)), 28px);
   --font-color: rgba(255, 255, 255, 0.87);
   --ten-percent-color: #535bf2;
-  --background-color-main: #242424;
+  --background-color-main: #24242491;
   --background-color-block: rgba(153, 134, 134, 0.801);
-  --shadow: 0px 5px 10px 0px rgba(231, 225, 225, 0.5);
+  --shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   --gradient: linear-gradient(90deg, rgba(36, 36, 44, 0.651) 0%, rgba(237, 237, 240, 0.329) 35%, rgba(36, 37, 37, 0.397) 100%);
 
 }
@@ -31,10 +31,14 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: var(--background-color-main);
+  background-color: var(--gradient);
   font-size: var(--main-font);
   overflow-y: auto;
   overflow-x: hidden;
+  background-image: url('/img/background.svg');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
 }
 
 h1 {
@@ -78,19 +82,18 @@ input:focus, textarea:focus {
 }
 
 .footer {
+  display: flex;
   position: sticky;
   bottom: 0;
+  left: 0;
   width: 100vw;
-  display: flex;
   align-self: center;
   align-items: center;
   justify-content: center;
   font-size: calc(var(--main-font) - 7px);
   text-align: center;
   padding: .5rem;
-  z-index: 0;
   background-color: var(--background-color-main);
-  box-shadow: var(--shadow);
 }
 
 .footer p {

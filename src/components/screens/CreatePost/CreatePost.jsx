@@ -1,19 +1,20 @@
 import styles from './CreatePost.module.css'
 import { useState } from 'react'
+import uniqid from 'uniqid'
 import { useNavigate } from "react-router-dom"
 import {
     getAuth
 } from 'firebase/auth'
 import {
     getFirestore,
-    collection,
-    addDoc,
     serverTimestamp,
+    setDoc,
+    doc,
 } from 'firebase/firestore'
 
-const CreatePost = (user) => {
+const CreatePost = (prop) => {
     // eslint-disable-next-line no-unused-vars
-    const [author, setAuthor] = useState(user.user.email)
+    const [author, setAuthor] = useState(prop.user.email)
     const [title, setTitle] = useState('')
     const [post, setPost] = useState('')
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ const CreatePost = (user) => {
     const createPost = (e) => {
         e.preventDefault()
         savePost(author ,title, post)
-        navigate('/')
+        prop.refreshPage()
     }
 
     const handleTitle = (e) => {
@@ -40,15 +41,17 @@ const CreatePost = (user) => {
     }
 
     async function savePost(authorName, titleText, postText) {
+        const id = uniqid()
         //Push a new post to Cloud Firestore.
         try {
-          await addDoc(collection(getFirestore(), 'posts'), {
+          await setDoc(doc(getFirestore(), 'posts', id), {
             author: authorName,
             title: titleText,
             text: postText,
             profilePicUrl: getProfilePicUrl(),
-            timestamp: serverTimestamp()
-          })
+            timestamp: serverTimestamp(),
+            id: id
+          }).then(navigate('/'))
         }
         catch(error) {
           console.error('Error writing new post to Firebase Database', error)
