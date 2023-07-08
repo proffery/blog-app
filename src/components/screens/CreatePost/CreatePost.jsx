@@ -54,7 +54,8 @@ const CreatePost = (prop) => {
           }).then(navigate('/'))
         }
         catch(error) {
-          console.error('Error writing new post to Firebase Database', error)
+            prop.showError(error)
+            console.error('Error writing new post to Firebase Database', error)
         }
     }
 

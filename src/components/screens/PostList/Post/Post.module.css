@@ -52,3 +52,13 @@
     padding: 0;
 }
 
+.editPostForm {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background-color: var(--background-color-main);
+    z-index: 99;
+    border-radius: .5rem;
+}

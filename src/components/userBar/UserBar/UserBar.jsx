@@ -110,7 +110,7 @@ const UserBar = (prop) => {
         </nav>
       </div>
       <Routes>
-      <Route path='/' element={<PostList posts={prop.posts} deletePost={deletePost} refreshPage={refreshPage}/>} />
+      <Route path='/' element={<PostList posts={prop.posts} deletePost={deletePost} refreshPage={refreshPage} showError={showError}/>} />
       <Route path='/post:id' element={<div>Post</div>} />
         {!signInStatus ? 
           <Route path='/register' element={<Register showError={showError}/>} /> :
