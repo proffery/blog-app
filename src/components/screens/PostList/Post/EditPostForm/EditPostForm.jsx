@@ -8,7 +8,7 @@ import {
 } from 'firebase/firestore'
 
 const EditPostForm = (prop) => {
-    console.log(prop.postData)
+    //console.log(prop.postData)
     // eslint-disable-next-line no-unused-vars
     const [author, setAuthor] = useState(prop.postData.author)
     const [title, setTitle] = useState(prop.postData.title)
@@ -17,22 +17,30 @@ const EditPostForm = (prop) => {
 
     const editPost = (e) => {
         e.preventDefault()
+        e.stopPropagation()
+        e.nativeEvent.stopImmediatePropagation()
         savePost(author, title, post)
         prop.refreshPage()
     }
 
     const handleTitle = (e) => {
         e.preventDefault()
+        e.stopPropagation()
+        e.nativeEvent.stopImmediatePropagation()
         setTitle(e.target.value)
     }
 
     const handlePost = (e) => {
         e.preventDefault()
+        e.stopPropagation()
+        e.nativeEvent.stopImmediatePropagation()
         setPost(e.target.value)
     }
 
     const cancelHandle = (e) => {
-        e.preventDefault()
+        e.stopPropagation()
+        e.stopPropagation()
+        e.nativeEvent.stopImmediatePropagation()
         prop.setPostFormVisibility('none')
     }
     async function savePost(authorName, titleText, postText) {
@@ -53,7 +61,7 @@ const EditPostForm = (prop) => {
     }
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container} onClick={e => e.stopPropagation()}>
             <h1>Edit post #{prop.postData.title}</h1>
             <form onSubmit={editPost}>
                 <div className={styles.group}>

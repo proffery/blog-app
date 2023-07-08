@@ -5,5 +5,10 @@
 
 .post {
     margin-bottom: 1rem;
-    
+    transition: all ease-in .2s;
 }
+
+.post:hover {
+    background-color: var(--background-color-main);
+}
+

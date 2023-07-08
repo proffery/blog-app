@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { EditPostForm } from './EditPostForm/EditPostForm'
 import styles from './Post.module.css'
 import {
@@ -6,10 +7,14 @@ import {
 } from 'firebase/auth'
 
 const Post = (prop) => {
-    console.log(prop)
+    //console.log(prop)
     const [postFormVisibility, setPostFormVisibility] = useState('none')
+    const navigate = useNavigate()
 
-    const deletePost = () => {
+    const deletePost = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        e.nativeEvent.stopImmediatePropagation()
         prop.deletePost(prop.postData.id)
         prop.refreshPage()
     }
@@ -22,12 +27,22 @@ const Post = (prop) => {
         prop.showError(msg)
       }
 
-    const openCloseEditPostForm = () => {
-        postFormVisibility === 'none' ? setPostFormVisibility('flex') : setPostFormVisibility('flex')
+    const openCloseEditPostForm = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        e.nativeEvent.stopImmediatePropagation()
+        postFormVisibility === 'none' ? setPostFormVisibility('flex') : setPostFormVisibility('none')
+    }
+
+    const clickOnPostHandle = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        e.nativeEvent.stopImmediatePropagation()
+        navigate('/post/'+ prop.postData.id)
     }
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container} onClick={clickOnPostHandle}>
             <h3 className={styles.title}>{prop.postData.title}</h3>
             <div className={styles.content}>{prop.postData.text}</div>
             <br />

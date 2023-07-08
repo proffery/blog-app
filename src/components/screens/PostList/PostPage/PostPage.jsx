@@ -1,8 +1,11 @@
-import { Post } from './Post/Post'
-import styles from './PostList.module.css'
+import { useParams } from 'react-router-dom'
+import { Post } from '../Post/Post'
+import styles from './PostPage.module.css'
 
-const PostList = (prop) => {
-
+const PostPage = (prop) => {
+    const { id } = useParams()
+    // console.log(prop)
+    // console.log(id)
     const deletePost = (id) => {
         prop.deletePost(id)
         prop.refreshPage()
@@ -15,12 +18,10 @@ const PostList = (prop) => {
     const showError = (msg) => {
         prop.showError(msg)
     }
-
-    
     return (
         <div className={styles.container}>
-            {prop.posts.map(post => 
-                <div key={post.id} className={styles.post}>
+            {prop.posts.filter(singlepost => singlepost.id === id).map(post => 
+                <div key={post.timestamp} className={styles.post}>
                     <Post postData={post} refreshPage={refreshPage} deletePost={deletePost} showError={showError}/>
                 </div>
             )}
@@ -28,4 +29,4 @@ const PostList = (prop) => {
     )
 }
 
-export {PostList}
+export {PostPage}

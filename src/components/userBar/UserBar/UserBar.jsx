@@ -9,6 +9,7 @@ import NotFound from "../../screens/NotFound/NotFound"
 import CreatePost from "../../screens/CreatePost/CreatePost"
 import Fade from 'react-reveal/Fade'
 import { PostList } from "../../screens/PostList/PostList"
+import { PostPage } from "../../screens/PostList/PostPage/PostPage"
 
 const UserBar = (prop) => {
 //console.log(prop.posts)
@@ -94,12 +95,14 @@ const UserBar = (prop) => {
             }
             {/* DEMO MODE START!!! Del or comment for switch off DEMO! */}
             {signInStatus &&
-              <li className={styles.demo}>
-                <label className="demo" htmlFor='demo'>DEMO</label>
-                <label className={styles.switch}>
-                <input className={styles.slider + '-input'} id='demo' type="checkbox" checked={isAdmin} onChange={sliderChange}/>
-                <span className={styles.slider + ' ' + styles.round}></span>
-                </label>
+              <li>
+                <div className={styles.demo}>
+                  <label htmlFor='demo'>DEMO</label>
+                  <label className={styles.switch}>
+                  <input className={styles.slider + '-input'} id='demo' type="checkbox" checked={isAdmin} onChange={sliderChange}/>
+                  <span className={styles.slider + ' ' + styles.round}></span>
+                  </label>
+                </div>
               </li>
             }
           {/* DEMO MODE END!!! */}
@@ -111,7 +114,8 @@ const UserBar = (prop) => {
       </div>
       <Routes>
       <Route path='/' element={<PostList posts={prop.posts} deletePost={deletePost} refreshPage={refreshPage} showError={showError}/>} />
-      <Route path='/post:id' element={<div>Post</div>} />
+      <Route path='/post' element={<PostList posts={prop.posts} deletePost={deletePost} refreshPage={refreshPage} showError={showError}/>} />
+      <Route path='/post/:id' element={<PostPage refreshPage={refreshPage} posts={prop.posts}/>} />
         {!signInStatus ? 
           <Route path='/register' element={<Register showError={showError}/>} /> :
           (isAdmin && 
