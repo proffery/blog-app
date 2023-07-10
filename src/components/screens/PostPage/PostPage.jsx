@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { Post } from '../Post/Post'
+import { Post } from '../PostList/Post/Post'
 import styles from './PostPage.module.css'
 
 const PostPage = (prop) => {

@@ -39,3 +39,7 @@
 .post {
     resize: vertical;
 }
+
+h1, h2 {
+    margin: .5rem;
+}

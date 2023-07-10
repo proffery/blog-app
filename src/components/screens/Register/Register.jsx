@@ -58,15 +58,15 @@ const Register = (prop) => {
             <form onSubmit={registerSubmitHamdle}>
                 <div className={styles.group}>
                     <label htmlFor="register-email">E-mail:</label>
-                    <input type="text" name="register-email" id="register-email" value={email} onChange={emailHandle}/>
+                    <input type="text" name="register-email" id="register-email" placeholder='Enter email' value={email} onChange={emailHandle}/>
                 </div>
                 <div className={styles.group}>
                     <label htmlFor="register-password">Password:</label>
-                    <input type="password" name="register-password" id="register-password" value={password} onChange={passwordHandle}/>
+                    <input type="password" name="register-password" id="register-password" placeholder='Enter password' value={password} onChange={passwordHandle}/>
                 </div>
                 <div className={styles.group}>
                     <label htmlFor="register-password-repeat">Repeat password:</label>
-                    <input type="password" name="register-password-repeat" id="register-password-repeat" value={passwordRepeat} onChange={passwordRepeatHandle}/>
+                    <input type="password" name="register-password-repeat" id="register-password-repeat" placeholder='Repeat password' value={passwordRepeat} onChange={passwordRepeatHandle}/>
                 </div>
                 <div className={styles.group}>
                     <button type="submit">Register</button>

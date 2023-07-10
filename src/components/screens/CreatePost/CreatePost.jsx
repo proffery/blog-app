@@ -61,6 +61,7 @@ const CreatePost = (prop) => {
 
     return (
         <div className={styles.container}>
+            <h1>New post:</h1>
             <form onSubmit={createPost}>
                 <div className={styles.group}>
                     <label htmlFor="author">Author:</label>

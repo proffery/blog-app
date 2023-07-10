@@ -62,7 +62,8 @@ const EditPostForm = (prop) => {
 
     return (
         <div className={styles.container} onClick={e => e.stopPropagation()}>
-            <h1>Edit post #{prop.postData.title}</h1>
+            <h1>Edit post:</h1>
+            <h2>{prop.postData.title}</h2>
             <form onSubmit={editPost}>
                 <div className={styles.group}>
                     <label htmlFor="author">Author:</label>
@@ -76,7 +77,7 @@ const EditPostForm = (prop) => {
 
                 <div className={styles.group}>
                     <label htmlFor="create-post">Post:</label>
-                    <textarea type='text' className={styles.post} id='create-post' placeholder='Post content' value={post} onChange={handlePost}/>
+                    <textarea type='text' className={styles.post} id='create-post' rows={5} placeholder='Post content' value={post} onChange={handlePost}/>
                 </div>
                 <div className={styles.buttons}>
                     <button type='submit'>Send</button>

@@ -9,7 +9,7 @@ import NotFound from "../../screens/NotFound/NotFound"
 import CreatePost from "../../screens/CreatePost/CreatePost"
 import Fade from 'react-reveal/Fade'
 import { PostList } from "../../screens/PostList/PostList"
-import { PostPage } from "../../screens/PostList/PostPage/PostPage"
+import { PostPage } from '../../screens/PostPage/PostPage'
 
 const UserBar = (prop) => {
 //console.log(prop.posts)
