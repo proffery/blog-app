@@ -92,7 +92,7 @@ input:focus, textarea:focus {
   position: sticky;
   bottom: 0;
   left: 0;
-  width: 100vw;
+  min-width: 90vw;
   align-self: center;
   align-items: center;
   justify-content: center;

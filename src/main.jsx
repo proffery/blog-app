@@ -68,7 +68,7 @@ async function loadData() {
 const refreshPage = () => {
   const timer = setTimeout(() => {
       window.location.reload(true)
-    }, 1000);
+    }, 200);
     return () => clearTimeout(timer);
 }
 

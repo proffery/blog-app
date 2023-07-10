@@ -5,6 +5,7 @@
   justify-content: center;
   box-shadow: var(--shadow);
   background-color: var(--background-color-main);
+  padding-top: .5rem;
 }
 
 .logout {
