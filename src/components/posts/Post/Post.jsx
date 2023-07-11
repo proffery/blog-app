@@ -1,18 +1,17 @@
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import { EditPostForm } from './EditPostForm/EditPostForm'
+import { Link, useNavigate } from "react-router-dom"
+import { EditPostForm } from '../EditPostForm/EditPostForm'
 import styles from './Post.module.css'
 import {
     getAuth
 } from 'firebase/auth'
+import { AddComment } from "../../comments/AddComment/AddComment"
 
 const Post = (prop) => {
     //console.log(new Date(prop.postData.timestamp * 1000).toLocaleString())
     const [postFormVisibility, setPostFormVisibility] = useState('none')
     const [readButtonText, setReadButtonText] = useState('Read more')
     const [readButtonStat, setReadButtonStat] = useState(false)
-    // eslint-disable-next-line no-unused-vars
-    const [expandedClass, setExpandedClass] = useState('expanded')
     const navigate = useNavigate()
 
     const deletePost = (e) => {
@@ -51,14 +50,24 @@ const Post = (prop) => {
         readButtonStat ? setReadButtonStat(false) : setReadButtonStat(true)
     }
 
+
     useEffect (() => {
         readButtonStat ? (setReadButtonText('Read less')) : (setReadButtonText('Read more'))
     }, [readButtonStat])
 
     return (
-        <div className={styles.container} onClick={clickOnPostHandle}>
-            <h3 className={styles.title}>{prop.postData.title}</h3>
-            <p className={readButtonStat ? (styles.content + readButtonStat + ' ' + expandedClass) : styles.content}>{prop.postData.text}</p>
+        <div className={styles.container}>
+            <h3 className={styles.title} onClick={clickOnPostHandle}><Link to={'/post/' + prop.postData.id}>{prop.postData.title}</Link></h3>
+            <p className={readButtonStat ? (styles.content + readButtonStat + ' ' + 'expanded') : styles.content}>
+                {prop.postData.text}
+            </p>
+                {!!getAuth().currentUser && 
+                    <div className={styles.addComment}>
+                        {readButtonStat && 
+                            <AddComment postData={prop.postData} showError={showError} refreshPage={refreshPage}/>
+                        }
+                    </div>
+                }
             <button className={styles.readMore} onClick={readMoreHandler}>{readButtonText}</button>
             <div className={styles.userInfo}>Posted {new Date(prop.postData.timestamp.seconds * 1000).toLocaleString("ru-RU", {dateStyle: "short"})} by 
                 <img className={styles.userImg} src={prop.postData.profilePicUrl} alt='User avatar' />

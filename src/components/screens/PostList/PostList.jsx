@@ -1,4 +1,4 @@
-import { Post } from './Post/Post'
+import { Post } from '../../posts/Post/Post'
 import styles from './PostList.module.css'
 
 const PostList = (prop) => {

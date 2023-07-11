@@ -79,3 +79,8 @@
     /* z-index: 99; */
     border-radius: .5rem;
 }
+
+.addComment {
+    display: flex;
+    margin: .5rem;
+}
