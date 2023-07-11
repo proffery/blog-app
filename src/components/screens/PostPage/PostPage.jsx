@@ -4,8 +4,6 @@ import styles from './PostPage.module.css'
 
 const PostPage = (prop) => {
     const { id } = useParams()
-    // console.log(prop)
-    // console.log(id)
     const deletePost = (id) => {
         prop.deletePost(id)
         prop.refreshPage()

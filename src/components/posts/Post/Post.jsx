@@ -6,6 +6,7 @@ import {
     getAuth
 } from 'firebase/auth'
 import { AddComment } from "../../comments/AddComment/AddComment"
+import { CommentList } from "../../comments/CommentList/CommentList"
 
 const Post = (prop) => {
     //console.log(new Date(prop.postData.timestamp * 1000).toLocaleString())
@@ -61,32 +62,42 @@ const Post = (prop) => {
             <p className={readButtonStat ? (styles.content + readButtonStat + ' ' + 'expanded') : styles.content}>
                 {prop.postData.text}
             </p>
-                {!!getAuth().currentUser && 
+            {!!getAuth().currentUser && 
+                <>
+                    <div className={styles.commentList}>
+                        <CommentList postData={prop.postData}/>
+                    </div>
                     <div className={styles.addComment}>
                         {readButtonStat && 
                             <AddComment postData={prop.postData} showError={showError} refreshPage={refreshPage}/>
                         }
                     </div>
-                }
-            <button className={styles.readMore} onClick={readMoreHandler}>{readButtonText}</button>
-            <div className={styles.userInfo}>Posted {new Date(prop.postData.timestamp.seconds * 1000).toLocaleString("ru-RU", {dateStyle: "short"})} by 
-                <img className={styles.userImg} src={prop.postData.profilePicUrl} alt='User avatar' />
-                <b className={styles.userName}>{prop.postData.author}</b>
-            {!!getAuth().currentUser && (getAuth().currentUser.email === prop.postData.author &&
-                <>
-                    <div className={styles.editPostForm} style={{display: postFormVisibility,}}>
-                        <EditPostForm postData={prop.postData} refreshPage={refreshPage} setPostFormVisibility={setPostFormVisibility} showError={showError}/>
-                    </div>
-                    <ul className={styles.options}>
-                        <li>
-                            <img className={styles.userImg} onClick={deletePost} src="/img/trash-can-outline.svg" alt="Delete" />
-                        </li>
-                        <li>
-                            <img className={styles.userImg} onClick={openCloseEditPostForm} src="/img/text-box-edit-outline.svg" alt="Edit" />
-                        </li>
-                    </ul>
                 </>
-            )}
+            }
+            <button className={styles.readMore} onClick={readMoreHandler}>{readButtonText}</button>
+            <div className={styles.userInfo}>Posted
+                {' ' + new Date(prop.postData.timestamp.seconds * 1000).toLocaleString("eu-EU", {dateStyle: "medium"}) + ', ' + 
+                    new Date(prop.postData.timestamp.seconds * 1000).toLocaleTimeString("ru-Ru")
+                } 
+                by 
+                    <img className={styles.userImg} src={prop.postData.profilePicUrl} alt='User avatar' />
+                    <b className={styles.userName}>{prop.postData.author}</b>
+
+                {!!getAuth().currentUser && (getAuth().currentUser.email === prop.postData.author &&
+                    <>
+                        <div className={styles.editPostForm} style={{display: postFormVisibility,}}>
+                            <EditPostForm postData={prop.postData} refreshPage={refreshPage} setPostFormVisibility={setPostFormVisibility} showError={showError}/>
+                        </div>
+                        <ul className={styles.options}>
+                            <li>
+                                <img className={styles.userImg} onClick={deletePost} src="/img/trash-can-outline.svg" alt="Delete" />
+                            </li>
+                            <li>
+                                <img className={styles.userImg} onClick={openCloseEditPostForm} src="/img/text-box-edit-outline.svg" alt="Edit" />
+                            </li>
+                        </ul>
+                    </>
+                )}
             </div>
         </div>
     )
