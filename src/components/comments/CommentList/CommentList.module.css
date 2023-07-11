@@ -12,6 +12,7 @@
     border-radius: .5rem;
     box-shadow: var(--shadow);
     margin-bottom: 1.5rem;
+    background-color: var(--background-color-main);
 }
 
 .date {

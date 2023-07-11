@@ -10,6 +10,7 @@
     box-shadow: var(--shadow);
     padding: 1rem;
     border-radius: .5rem;
+    background-color: var(--background-color-main);
 }
 
 .group {

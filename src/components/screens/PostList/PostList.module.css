@@ -8,3 +8,8 @@
     transition: all ease-in .2s;
 }
 
+h1 {
+    display: flex;
+    align-self: center;
+}
+
