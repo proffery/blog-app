@@ -9,7 +9,7 @@
     flex-direction: column;
     box-shadow: var(--shadow);
     padding: 1rem;
-    border: 1px solid;
+    border-radius: .5rem;
 }
 
 .group {
@@ -23,8 +23,7 @@
 
 textarea {
     display: flex;
+    flex: 1;
     margin-bottom: .5rem;
-    min-height: 10vh;
-    width:  min(50vw, 25rem);
     resize: vertical;
 }

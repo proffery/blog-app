@@ -1,4 +1,4 @@
-import styles from './AddComment.css?inline'
+import styles from './AddComment.module.css'
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import {
@@ -12,7 +12,7 @@ import {
 } from 'firebase/auth'
 
 const AddComment = (prop) => {
-    console.log(prop.postData.id)
+    //console.log(prop.postData.id)
     const [comment, setComment] = useState('')
     const navigate = useNavigate();
     

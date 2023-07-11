@@ -58,15 +58,17 @@ const Post = (prop) => {
 
     return (
         <div className={styles.container}>
-            <h3 className={styles.title} onClick={clickOnPostHandle}><Link to={'/post/' + prop.postData.id}>{prop.postData.title}</Link></h3>
+            <h2 className={styles.title} onClick={clickOnPostHandle}><Link to={'/post/' + prop.postData.id}>{prop.postData.title}</Link></h2>
             <p className={readButtonStat ? (styles.content + readButtonStat + ' ' + 'expanded') : styles.content}>
                 {prop.postData.text}
             </p>
+            {readButtonStat && 
+                <div className={styles.commentList}>
+                    <CommentList postData={prop.postData}/>
+                </div>  
+            }
             {!!getAuth().currentUser && 
                 <>
-                    <div className={styles.commentList}>
-                        <CommentList postData={prop.postData}/>
-                    </div>
                     <div className={styles.addComment}>
                         {readButtonStat && 
                             <AddComment postData={prop.postData} showError={showError} refreshPage={refreshPage}/>

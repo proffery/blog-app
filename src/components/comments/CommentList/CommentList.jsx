@@ -1,4 +1,4 @@
-import styles from './CommentList.css?inline'
+import styles from './CommentList.module.css'
 import { useState } from 'react'
 import { collection, query, where, getDocs, getFirestore } from "firebase/firestore"
 import { useEffect } from 'react'
@@ -25,16 +25,17 @@ const CommentList = (prop) => {
         <div className={styles.container}>
             {comments.map(comment => 
                 <div key={comment.timestamp.seconds} className={styles.comment}>
-                    <p className={styles.commentText}>
+                    <div className={styles.author}>
+                        <img className={styles.img} src={comment.profilePicUrl} alt='User avatar' />
+                        <b className={styles.name}>{comment.author}:</b>
+                    </div>
+                    <p className={styles.text}>
                         {comment.text}
                     </p>
-                    <div className={styles.userInfo}>Posted
-                        {' ' + new Date(prop.postData.timestamp.seconds * 1000).toLocaleString("eu-EU", {dateStyle: "medium"}) + ', ' + 
-                            new Date(prop.postData.timestamp.seconds * 1000).toLocaleTimeString("ru-Ru")
+                    <div className={styles.date}>Commented:
+                        {' ' + new Date(comment.timestamp.seconds * 1000).toLocaleString("eu-EU", {dateStyle: "medium"}) + ', ' + 
+                            new Date(comment.timestamp.seconds * 1000).toLocaleTimeString("ru-Ru")
                         } 
-                        by 
-                        <img className={styles.userImg} src={prop.postData.profilePicUrl} alt='User avatar' />
-                        <b className={styles.userName}>{prop.postData.author}</b>
                     </div>
                 </div>    
             )}
