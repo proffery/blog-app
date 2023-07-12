@@ -42,7 +42,7 @@ const Post = (prop) => {
         e.preventDefault()
         e.stopPropagation()
         e.nativeEvent.stopImmediatePropagation()
-        navigate('/post/'+ prop.postData.id)
+        navigate('/posts/'+ prop.postData.id)
     }
 
     const readMoreHandler = (e) => {
@@ -58,7 +58,7 @@ const Post = (prop) => {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.title} onClick={clickOnPostHandle}><Link to={'/post/' + prop.postData.id}>{prop.postData.title}</Link></h2>
+            <h2 className={styles.title} onClick={clickOnPostHandle}><Link to={'/posts/' + prop.postData.id}>{prop.postData.title}</Link></h2>
             <p className={readButtonStat ? (styles.content + readButtonStat + ' ' + 'expanded') : styles.content}>
                 {prop.postData.text}
             </p>

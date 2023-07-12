@@ -3,13 +3,14 @@ import { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import {
     getFirestore,
-    addDoc,
+    setDoc,
     serverTimestamp,
-    collection
+    doc
 } from 'firebase/firestore'
 import {
     getAuth
 } from 'firebase/auth'
+import uniqid from 'uniqid'
 
 const AddComment = (prop) => {
     //console.log(prop.postData.id)
@@ -34,12 +35,14 @@ const AddComment = (prop) => {
     }
 
     async function saveComment(comment, author, id) {
+        const commentId = uniqid()
         //Push a new comment to Cloud Firestore.
         try {
-          await addDoc(collection(getFirestore(), 'comments'), {
+          await setDoc(doc(getFirestore(), 'comments', commentId), {
             author: author,
             text: comment,
             id: id,
+            comment_id: commentId,
             profilePicUrl: getProfilePicUrl(),
             timestamp: serverTimestamp()
           })

@@ -74,7 +74,7 @@ const Login = (prop) => {
         </div>
         <div className={styles.group}>
           <button type="submit">
-            <p className={styles.loginText}>Log in Emai</p>
+            <p className={styles.loginText}>Log in Email</p>
             <img className={styles.loginSymbol} src='/public/img/at.svg' alt="Log in with email" />
           </button>
         </div>

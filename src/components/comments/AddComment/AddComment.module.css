@@ -1,16 +1,18 @@
 .container {
     display: flex;
     align-self: center;
+    align-items: center;
     justify-content: center;
+    z-index: 0;
 }
 
 .form {
     display: flex;
+    flex: 1;
     flex-direction: column;
     box-shadow: var(--shadow);
-    padding: 1rem;
-    border-radius: .5rem;
-    background-color: var(--background-color-main);
+    padding: .5rem;
+    background-color: var(--background-color-block);
 }
 
 .group {

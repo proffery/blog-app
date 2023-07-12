@@ -1,6 +1,8 @@
 .container {
     display: flex;
     flex-direction: column;
+    background-color: var(--background-color-main);
+    min-height: 90vh;
 }
 
 .post {

@@ -51,7 +51,7 @@ const CreatePost = (prop) => {
             profilePicUrl: getProfilePicUrl(),
             timestamp: serverTimestamp(),
             id: id
-          }).then(navigate('/'))
+          }).then(navigate('/posts/' + id))
         }
         catch(error) {
             prop.showError(error)

@@ -3,9 +3,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow);
-  background-color: var(--background-color-main);
+  box-shadow: var(--shadow-inner);
+  background-color: var(--background-color-block);
   padding-top: .5rem;
+  padding-bottom: .5rem;
 }
 
 .logout {
@@ -59,7 +60,7 @@ em {
   flex-direction: column;
   align-self: center;
   justify-content: center;
-  transform: scale(.6);
+  transform: scale(.5);
 }
 
 .switch {
@@ -132,7 +133,6 @@ input:checked + .slider:before {
   background-color: var(--background-color-main);
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow);
   z-index: 999;
 }
 
@@ -165,7 +165,7 @@ input:checked + .slider:before {
 
 .userEmail {
   display: flex;
-  font-size: calc(var(--main-font) - 6px);
+  font-size: calc(var(--main-font) - 7px);
   color: var(--ten-percent-color);
 }
 @media screen and (max-width: 600px) {

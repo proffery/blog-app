@@ -9,13 +9,21 @@
   text-rendering: optimizeLegibility;
 
   --main-font: clamp(16px, calc(16px + (28 - 16) * ((100vw - 360px) / 1560)), 28px);
-  --font-color: rgba(255, 255, 255, 0.87);
+  --font-color: rgba(58, 50, 50, 0.87);
   --ten-percent-color: #535bf2;
-  --background-color-main: #242424c2;
-  --background-color-block: rgba(240, 46, 170, 0.6);
-  --shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
-  --gradient: linear-gradient(90deg, rgba(36, 36, 44, 0.651) 0%, rgba(237, 237, 240, 0.329) 35%, rgba(36, 37, 37, 0.397) 100%);
+  --background-color-main: #ffffff;
+  --background-color-block: rgba(242, 242, 247, 0.966);
+  --shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  --shadow-inner: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+  --gradient: rgb(38, 57, 77) 0px 20px 30px -10px;
 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
 }
 
 a {
@@ -30,13 +38,14 @@ a:hover {
 body {
   margin: 0;
   min-width: 320px;
-  min-height: 100vh;
-  background-color: var(--gradient);
+  min-height: 90vh;
   font-size: var(--main-font);
   overflow-y: auto;
   overflow-x: hidden;
-  background-image: url('/img/background.svg');
-  background-repeat: no-repeat;
+  color: var(--font-color);
+  background-color: var(--background-color-main);
+  background-image: url('/img/radiant-gradient.svg');
+  background-repeat:repeat-y;
   background-position: top;
   background-size: cover;
 }
@@ -44,7 +53,6 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  text-shadow: var(--shadow);
 }
 
 button {
@@ -104,9 +112,8 @@ input:focus, textarea:focus {
   font-size: calc(var(--main-font) - 7px);
   text-align: center;
   padding: .5rem;
-  background-color: var(--background-color-main);
-  z-index: -1;
-  margin-top: 2rem;
+  background-color: var(--background-color-block);
+  box-shadow: var(--shadow-inner);
 }
 
 .footer p {
@@ -121,7 +128,7 @@ input:focus, textarea:focus {
 
 .github-logo {
   height: 1rem;
-  filter: invert();
+  /* filter: invert(); */
   transition: all .3s;
 }
 .github-logo:hover {
@@ -144,8 +151,29 @@ input:focus, textarea:focus {
   margin-top: 5rem;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 @media screen and (max-width: 600px) {
   .linksActive {
     margin-top: 7rem;
   }
 }
+

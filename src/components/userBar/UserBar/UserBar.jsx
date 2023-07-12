@@ -81,6 +81,9 @@ const UserBar = (prop) => {
               <NavLink to='/'>Home</NavLink>
             </li>
             <li>
+              <NavLink to='/posts'>Posts</NavLink>
+            </li>
+            <li>
               <NavLink to='/about'>About</NavLink>
             </li>
             {/* {!signInStatus && 
@@ -107,15 +110,16 @@ const UserBar = (prop) => {
             }
           {/* DEMO MODE END!!! */}
           </ul>
-              <button className={styles.userStatus} onClick={openCloseUser}>
+              <div className={styles.userStatus} onClick={openCloseUser}>
                 <img src='/img/account-details-outline.svg' alt="User slider" className={styles.userSlider} ></img>
-              </button>
+                {signInStatus && <p className={styles.userEmail}>{prop.user.auth.currentUser.email}</p>} 
+              </div>
         </nav>
       </div>
       <Routes>
       <Route path='/' element={<PostList posts={prop.posts} deletePost={deletePost} refreshPage={refreshPage} showError={showError}/>} />
-      <Route path='/post' element={<PostList posts={prop.posts} deletePost={deletePost} refreshPage={refreshPage} showError={showError}/>} />
-      <Route path='/post/:id' element={<PostPage refreshPage={refreshPage} posts={prop.posts}/>} />
+      <Route path='/posts' element={<PostList posts={prop.posts} deletePost={deletePost} refreshPage={refreshPage} showError={showError}/>} />
+      <Route path='/posts/:id' element={<PostPage refreshPage={refreshPage} posts={prop.posts}/>} />
         {!signInStatus ? 
           <Route path='/register' element={<Register showError={showError}/>} /> :
           (isAdmin && 

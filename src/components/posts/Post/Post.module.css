@@ -5,6 +5,7 @@
     justify-content: left;
     box-shadow: var(--shadow);
     padding: 0 1rem .5rem 1rem;
+    background-color: var(--background-color-main);
 }
 
 .title {
@@ -76,9 +77,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: var(--background-color-main);
-    /* z-index: 99; */
     border-radius: .5rem;
+    z-index: 99;
 }
 
 .addComment {
@@ -86,4 +86,5 @@
     margin: .5rem;
     align-items: center;
     align-self: center;
+    z-index: 1;
 }

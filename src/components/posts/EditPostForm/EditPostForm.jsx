@@ -52,7 +52,7 @@ const EditPostForm = (prop) => {
             title: titleText,
             text: postText,
             id: id
-          }).then(navigate('/'))
+          }).then(navigate('/posts/'+ id))
         }
         catch(error) {
             prop.showError(error)
