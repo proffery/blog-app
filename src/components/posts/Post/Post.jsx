@@ -64,7 +64,7 @@ const Post = (prop) => {
             </p>
             {readButtonStat && 
                 <div className={styles.commentList}>
-                    <CommentList postData={prop.postData}/>
+                    <CommentList postData={prop.postData} showError={showError} refreshPage={refreshPage}/>
                 </div>  
             }
             {!!getAuth().currentUser && 
@@ -79,7 +79,7 @@ const Post = (prop) => {
             <button className={styles.readMore} onClick={readMoreHandler}>{readButtonText}</button>
             <div className={styles.userInfo}>Posted
                 {' ' + new Date(prop.postData.timestamp.seconds * 1000).toLocaleString("eu-EU", {dateStyle: "medium"}) + ', ' + 
-                    new Date(prop.postData.timestamp.seconds * 1000).toLocaleTimeString("ru-Ru")
+                    new Date(prop.postData.timestamp.seconds * 1000).toLocaleTimeString("ru-Ru") + ' '
                 } 
                 by 
                     <img className={styles.userImg} src={prop.postData.profilePicUrl} alt='User avatar' />

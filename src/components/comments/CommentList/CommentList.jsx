@@ -1,6 +1,7 @@
 import styles from './CommentList.module.css'
 import { useState } from 'react'
-import { collection, query, where, getDocs, getFirestore } from "firebase/firestore"
+import { collection, query, where, getDocs, getFirestore, doc, deleteDoc } from "firebase/firestore"
+import { getAuth } from 'firebase/auth'
 import { useEffect } from 'react'
 const CommentList = (prop) => {
     //console.log(prop.postData)
@@ -20,6 +21,16 @@ const CommentList = (prop) => {
         })
         setComments(filteredData)
     }
+
+    const deleteComment = async(id) => {
+        console.log(id)
+        const db = getFirestore()
+        const docRef = doc(db, "comments", id)
+        deleteDoc(docRef)
+          .catch(error => { prop.showError(error)
+            .then(prop.refreshPage())
+        })
+      }
     
     return (
         <div className={styles.container}>
@@ -36,6 +47,11 @@ const CommentList = (prop) => {
                         {' ' + new Date(comment.timestamp.seconds * 1000).toLocaleString("eu-EU", {dateStyle: "medium"}) + ', ' + 
                             new Date(comment.timestamp.seconds * 1000).toLocaleTimeString("ru-Ru")
                         } 
+                        {!!getAuth().currentUser && (getAuth().currentUser.email === comment.author && 
+                        <>
+                            <img className={styles.img} onClick={deleteComment(comment.id)} src="/img/trash-can-outline.svg" alt="Delete" />
+                        </>
+                        )}
                     </div>
                 </div>    
             )}

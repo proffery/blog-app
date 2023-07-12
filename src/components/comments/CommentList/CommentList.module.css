@@ -18,7 +18,6 @@
 .date {
     display: flex;
     align-items: center;
-    align-self: flex-end;
     justify-content: right;
     font-size: calc(var(--main-font) - .5rem);
 }
