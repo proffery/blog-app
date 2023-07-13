@@ -161,6 +161,8 @@ input:checked + .slider:before {
   position: absolute;
   top: .5rem;
   right: .5rem;
+  border: 1px solid var(--ten-percent-color);
+  padding: .1rem;
 }
 
 .userEmail {

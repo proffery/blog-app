@@ -18,6 +18,7 @@ const CommentList = (prop) => {
         const querySnapshot = await getDocs(q)
         querySnapshot.forEach((comment) => {
             filteredData.unshift(comment.data());
+            prop.setCommentsNumber(filteredData.length)
         })
         setComments(filteredData)
     }

@@ -11,8 +11,10 @@ import { CommentList } from "../../comments/CommentList/CommentList"
 const Post = (prop) => {
     //console.log(new Date(prop.postData.timestamp * 1000).toLocaleString())
     const [postFormVisibility, setPostFormVisibility] = useState('none')
+    const [commentsVisibility, setCommentsVisibility] = useState('none')
     const [readButtonText, setReadButtonText] = useState('Read more')
     const [readButtonStat, setReadButtonStat] = useState(prop.isOpened)
+    const [commentsNumber, setCommentsNumber] = useState(0)
     const navigate = useNavigate()
 
     const deletePost = (e) => {
@@ -53,8 +55,12 @@ const Post = (prop) => {
 
 
     useEffect (() => {
-        readButtonStat ? (setReadButtonText('Read less')) : (setReadButtonText('Read more'))
+        readButtonStat ? (setReadButtonText('Read less'), setCommentsVisibility('flex')) : (setReadButtonText('Read more'), setCommentsVisibility('none'))
     }, [readButtonStat])
+
+    useEffect (() => {
+        
+    }, [])
 
     return (
         <div className={styles.container}>
@@ -62,11 +68,11 @@ const Post = (prop) => {
             <p className={readButtonStat ? (styles.content + readButtonStat + ' ' + 'expanded') : styles.content}>
                 {prop.postData.text}
             </p>
-            {readButtonStat && 
-                <div className={styles.commentList}>
-                    <CommentList postData={prop.postData} showError={showError} refreshPage={refreshPage}/>
+            
+                <div className={styles.commentList} style={{display: commentsVisibility,}}>
+                    <CommentList postData={prop.postData} showError={showError} refreshPage={refreshPage} setCommentsNumber={setCommentsNumber}/>
                 </div>  
-            }
+            
             {!!getAuth().currentUser && 
                 <>
                     <div className={styles.addComment}>
@@ -82,8 +88,11 @@ const Post = (prop) => {
                     new Date(prop.postData.timestamp.seconds * 1000).toLocaleTimeString("ru-Ru") + ' '
                 } 
                 by 
-                    <img className={styles.userImg} src={prop.postData.profilePicUrl} alt='User avatar' />
+                    <img className={styles.img} src={prop.postData.profilePicUrl} alt='User avatar' />
                     <b className={styles.userName}>{prop.postData.author}</b>
+                    <div className={styles.commensNumber} onClick={readMoreHandler}>
+                        <img className={styles.img} src='/img/comment-outline.svg' alt='User avatar' />{commentsNumber}
+                    </div>
 
                 {!!getAuth().currentUser && (getAuth().currentUser.email === prop.postData.author &&
                     <>
@@ -92,10 +101,10 @@ const Post = (prop) => {
                         </div>
                         <ul className={styles.options}>
                             <li>
-                                <img className={styles.userImg} onClick={deletePost} src="/img/trash-can-outline.svg" alt="Delete" />
+                                <img className={styles.img} onClick={deletePost} src="/img/trash-can-outline.svg" alt="Delete" />
                             </li>
                             <li>
-                                <img className={styles.userImg} onClick={openCloseEditPostForm} src="/img/text-box-edit-outline.svg" alt="Edit" />
+                                <img className={styles.img} onClick={openCloseEditPostForm} src="/img/text-box-edit-outline.svg" alt="Edit" />
                             </li>
                         </ul>
                     </>
