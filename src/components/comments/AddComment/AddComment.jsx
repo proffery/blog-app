@@ -41,12 +41,12 @@ const AddComment = (prop) => {
           await setDoc(doc(getFirestore(), 'comments', commentId), {
             author: author,
             text: comment,
-            id: id,
+            post_id: id,
             comment_id: commentId,
             profilePicUrl: getProfilePicUrl(),
             timestamp: serverTimestamp()
           })
-          .then(navigate(`/post/${prop.postData.id}`))
+          .then(navigate(`/posts/${prop.postData.id}`))
         }
         catch(error) {
             prop.showError(error)

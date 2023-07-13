@@ -21,7 +21,7 @@ const PostPage = (prop) => {
             <h1>Post #{id}</h1>
             {prop.posts.filter(singlepost => singlepost.id === id).map(post => 
                 <div key={post.timestamp} className={styles.post}>
-                    <Post postData={post} refreshPage={refreshPage} deletePost={deletePost} showError={showError}/>
+                    <Post postData={post} isOpened={true} refreshPage={refreshPage} deletePost={deletePost} showError={showError}/>
                 </div>
             )}
         </div>

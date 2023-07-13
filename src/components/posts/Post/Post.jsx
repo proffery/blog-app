@@ -12,7 +12,7 @@ const Post = (prop) => {
     //console.log(new Date(prop.postData.timestamp * 1000).toLocaleString())
     const [postFormVisibility, setPostFormVisibility] = useState('none')
     const [readButtonText, setReadButtonText] = useState('Read more')
-    const [readButtonStat, setReadButtonStat] = useState(false)
+    const [readButtonStat, setReadButtonStat] = useState(prop.isOpened)
     const navigate = useNavigate()
 
     const deletePost = (e) => {
