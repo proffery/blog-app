@@ -63,11 +63,13 @@ button {
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all ease-in-out 0.25s;
+  box-shadow: var(--shadow-inner);
 }
 button:hover {
   border-color: var(--ten-percent-color);
   background-color: var(--ten-percent-color);
+  box-shadow: var(--shadow);
 }
 button:focus,
 button:focus-visible {

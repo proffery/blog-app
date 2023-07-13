@@ -31,7 +31,7 @@ const AddComment = (prop) => {
 
     function getProfilePicUrl() {
         // Return the user's profile pic URL.
-        return getAuth().currentUser.photoURL ||'/img/account-outline.svg'
+        return getAuth().currentUser.photoURL ||'./img/account-outline.svg'
     }
 
     async function saveComment(comment, author, id) {

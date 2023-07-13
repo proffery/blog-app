@@ -162,8 +162,13 @@ input:checked + .slider:before {
   top: 2.5%;
   right: 1%;
   /* border: 1px solid var(--ten-percent-color); */
-  padding: .1rem;
+  padding: .2rem;
+  border-radius: .2rem;
   box-shadow: var(--shadow);
+}
+
+.userStatus:hover {
+  box-shadow: var(--shadow-inner);
 }
 
 .userEmail {

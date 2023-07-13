@@ -66,9 +66,11 @@ const Post = (prop) => {
         <div className={styles.container}>
             <h2 className={styles.title} onClick={clickOnPostHandle}><Link to={'/posts/' + prop.postData.id}>{prop.postData.title}</Link></h2>
                 <div className={styles.postHolder}>
-                    <div className={styles.postImageHolder}>
-                        <img className={styles.postImage} src={prop.postData.image_url} alt="Post image" />
-                    </div>
+                    {prop.postData.image_url !== '' &&
+                        <div className={styles.postImageHolder}>
+                            <img className={styles.postImage} src={prop.postData.image_url} alt="Post image" />
+                        </div>
+                    }
                     <p className={readButtonStat ? (styles.content + readButtonStat + ' ' + 'expanded') : styles.content}>
                         {prop.postData.text}
                     </p>
@@ -96,7 +98,7 @@ const Post = (prop) => {
                     <img className={styles.img} src={prop.postData.profilePicUrl} alt='User avatar' />
                     <b className={styles.userName}>{prop.postData.author}</b>
                     <div className={styles.commensNumber} onClick={readMoreHandler}>
-                        <img className={styles.img} src='/img/comment-outline.svg' alt='User avatar' />{commentsNumber}
+                        <img className={styles.img} src='./img/comment-outline.svg' alt='User avatar' />{commentsNumber}
                     </div>
 
                 {!!getAuth().currentUser && (getAuth().currentUser.email === prop.postData.author &&
@@ -106,10 +108,10 @@ const Post = (prop) => {
                         </div>
                         <ul className={styles.options}>
                             <li>
-                                <img className={styles.img} onClick={deletePost} src="/img/trash-can-outline.svg" alt="Delete" />
+                                <img className={styles.img} onClick={deletePost} src="./img/trash-can-outline.svg" alt="Delete" />
                             </li>
                             <li>
-                                <img className={styles.img} onClick={openCloseEditPostForm} src="/img/text-box-edit-outline.svg" alt="Edit" />
+                                <img className={styles.img} onClick={openCloseEditPostForm} src="./img/text-box-edit-outline.svg" alt="Edit" />
                             </li>
                         </ul>
                     </>

@@ -42,6 +42,7 @@
     max-height: 10rem;
     width: auto;
     margin: 1rem;
+    box-shadow: var(--shadow);
 }
 
 .content::first-letter {

@@ -51,7 +51,7 @@ const CommentList = (prop) => {
                         } 
                         {!!getAuth().currentUser && (getAuth().currentUser.email === comment.author && (comment.text !== '*DELETED*' &&
                         <>
-                            <img className={styles.img} onClick={deleteComment} id={comment.comment_id} src="/img/trash-can-outline.svg" alt="Delete" />
+                            <img className={styles.img} onClick={deleteComment} id={comment.comment_id} src="./img/trash-can-outline.svg" alt="Delete" />
                         </>
                         ))}
                     </div>

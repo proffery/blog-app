@@ -111,7 +111,7 @@ const UserBar = (prop) => {
           {/* DEMO MODE END!!! */}
           </ul>
               <div className={styles.userStatus} onClick={openCloseUser}>
-                <img src='/img/account-details-outline.svg' alt="User slider" className={styles.userSlider} ></img>
+                <img src='./img/account-details-outline.svg' alt="User slider" className={styles.userSlider} ></img>
                 {signInStatus && <p className={styles.userEmail}>{prop.user.auth.currentUser.email}</p>} 
               </div>
         </nav>
