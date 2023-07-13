@@ -41,7 +41,7 @@
     display: flex;
     max-height: 10rem;
     width: auto;
-    margin: 1rem;
+    margin: 0rem 1rem 1rem 0rem;
     box-shadow: var(--shadow);
 }
 

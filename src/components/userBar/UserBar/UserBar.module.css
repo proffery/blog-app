@@ -159,7 +159,7 @@ input:checked + .slider:before {
 .userStatus {
   display: flex;
   position: absolute;
-  top: 2.5%;
+  top: 2%;
   right: 1%;
   /* border: 1px solid var(--ten-percent-color); */
   padding: .2rem;
