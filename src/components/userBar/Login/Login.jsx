@@ -75,14 +75,14 @@ const Login = (prop) => {
         <div className={styles.group}>
           <button type="submit">
             <p className={styles.loginText}>Log in Email</p>
-            <img className={styles.loginSymbol} src='/public/img/at.svg' alt="Log in with email" />
+            <img className={styles.loginSymbol} src='/img/at.svg' alt="Log in with email" />
           </button>
         </div>
       </form>
       <div className={styles.group}>
         <button onClick={signIn}>
           <p className={styles.loginText}>Log in Goole</p>
-          <img className={styles.loginSymbol} src='/public/img/google.svg' alt="Log in with google" />
+          <img className={styles.loginSymbol} src='/img/google.svg' alt="Log in with google" />
         </button>
       </div>
     </div>

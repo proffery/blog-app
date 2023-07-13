@@ -159,10 +159,11 @@ input:checked + .slider:before {
 .userStatus {
   display: flex;
   position: absolute;
-  top: .5rem;
-  right: .5rem;
-  border: 1px solid var(--ten-percent-color);
+  top: 2.5%;
+  right: 1%;
+  /* border: 1px solid var(--ten-percent-color); */
   padding: .1rem;
+  box-shadow: var(--shadow);
 }
 
 .userEmail {

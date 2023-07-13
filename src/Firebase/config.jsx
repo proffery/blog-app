@@ -1,3 +1,6 @@
+import { getStorage } from 'firebase/storage'
+import { initializeApp } from 'firebase/app';
+
 const config = {
     apiKey: "AIzaSyB6qIEuWw3eSvsyz-6Qv_gZPYaULQiNN-s",
     authDomain: "blog-app-d8e51.firebaseapp.com",
@@ -16,3 +19,5 @@ const config = {
       return config;
     }
   }
+  const app = initializeApp(config)
+  export const storage = getStorage(app)

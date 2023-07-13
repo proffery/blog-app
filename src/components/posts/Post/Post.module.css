@@ -17,7 +17,7 @@
 .content {
     display: -webkit-box;
     justify-content: left;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-align: left;
@@ -25,6 +25,23 @@
 
 .content.expanded {
     -webkit-line-clamp: unset;
+}
+
+.postHolder {
+    display: flex;
+}
+
+.postImageHolder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.postImage {
+    display: flex;
+    max-height: 10rem;
+    width: auto;
+    margin: 1rem;
 }
 
 .content::first-letter {
@@ -100,4 +117,15 @@
     align-items: center;
 
     color: var(--ten-percent-color);
+}
+
+@media screen and (max-width: 600px) {
+    .postHolder {
+        flex-direction: column;
+    }
+    
+    .postImage {
+        min-height: 18rem;
+        min-width: auto;
+    }
 }

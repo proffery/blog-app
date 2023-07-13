@@ -7,22 +7,56 @@
     min-height: 90vh;
 }
 
+.form {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color-main);
+    box-shadow: var(--shadow);
+    padding: 1rem;
+}
+
 .group {
     display: flex;
     flex-direction: column;
     margin: .5rem;
+    width: clamp(200px, 25rem, 80vw); 
 }
 
 .title, .author {
     display: flex;
-    max-width: 50vw;
 }
 
 .post {
     display: flex;
     min-height: 10vh;
-    width:  min(50vw, 25rem);
     resize: vertical;
+}
+
+.images {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: min(50vw, 25rem);
+    gap: .2rem;
+    margin-top: .2rem;
+}
+
+.postImg {
+    width: 10vmin;
+    min-height: auto;
+    
+}
+.postImgHolder {
+    display: flex;
+}
+.postImgHolder:focus {
+    border: 2px solid var(--ten-percent-color);
+    transform: scale(1.1);
+}
+
+.uploadButton {
+    margin-top: .5rem;
 }
 
 .send {

@@ -65,9 +65,14 @@ const Post = (prop) => {
     return (
         <div className={styles.container}>
             <h2 className={styles.title} onClick={clickOnPostHandle}><Link to={'/posts/' + prop.postData.id}>{prop.postData.title}</Link></h2>
-            <p className={readButtonStat ? (styles.content + readButtonStat + ' ' + 'expanded') : styles.content}>
-                {prop.postData.text}
-            </p>
+                <div className={styles.postHolder}>
+                    <div className={styles.postImageHolder}>
+                        <img className={styles.postImage} src={prop.postData.image_url} alt="Post image" />
+                    </div>
+                    <p className={readButtonStat ? (styles.content + readButtonStat + ' ' + 'expanded') : styles.content}>
+                        {prop.postData.text}
+                    </p>
+                </div>
             
                 <div className={styles.commentList} style={{display: commentsVisibility,}}>
                     <CommentList postData={prop.postData} showError={showError} refreshPage={refreshPage} setCommentsNumber={setCommentsNumber}/>
