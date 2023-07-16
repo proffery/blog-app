@@ -90,15 +90,17 @@ const Post = (prop) => {
             }
             <button className={styles.readMore} onClick={readMoreHandler}>{readButtonText}</button>
             <div className={styles.userInfo}>Posted
-                {' ' + new Date(prop.postData.timestamp.seconds * 1000).toLocaleString("eu-EU", {dateStyle: "medium"}) + ', ' + 
+                {' ' + new Date(prop.postData.timestamp.seconds * 1000).toLocaleString("ru-RU", {dateStyle: "short"}) + ', ' + 
                     new Date(prop.postData.timestamp.seconds * 1000).toLocaleTimeString("ru-Ru") + ' '
                 } 
                 by 
                     <img className={styles.img} src={prop.postData.profilePicUrl} alt='User avatar' />
                     <b className={styles.userName}>{prop.postData.author}</b>
-                    <div className={styles.commensNumber} onClick={readMoreHandler}>
-                        <img className={styles.img} src='./img/comment-outline.svg' alt='User avatar' />{commentsNumber}
-                    </div>
+                    {commentsNumber > 0 && 
+                        <div className={styles.commensNumber} onClick={readMoreHandler}>
+                            <img className={styles.img} src='./img/comment-outline.svg' alt='Comments' />{commentsNumber}
+                        </div>
+                    }
 
                 {!!getAuth().currentUser && (getAuth().currentUser.email === prop.postData.author &&
                     <>
