@@ -46,3 +46,37 @@ h1, h2 {
 input, textarea {
     color: var(--font-color);
 }
+
+.images {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: min(50vw, 25rem);
+    gap: .2rem;
+    margin-top: .2rem;
+}
+
+.postImg {
+    width: 10vmin;
+    min-height: auto;
+    
+}
+.postImgHolder {
+    display: flex;
+}
+.postImgHolder:focus {
+    border: 2px solid var(--ten-percent-color);
+    transform: scale(1.1);
+}
+
+.uploadButton {
+    margin-top: .5rem;
+}
+
+.send {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem;
+}

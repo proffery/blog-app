@@ -9,7 +9,6 @@ import { AddComment } from "../../comments/AddComment/AddComment"
 import { CommentList } from "../../comments/CommentList/CommentList"
 
 const Post = (prop) => {
-    //console.log(new Date(prop.postData.timestamp * 1000).toLocaleString())
     const [postFormVisibility, setPostFormVisibility] = useState('none')
     const [commentsVisibility, setCommentsVisibility] = useState('none')
     const [readButtonText, setReadButtonText] = useState('Read more')

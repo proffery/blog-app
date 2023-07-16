@@ -19,7 +19,6 @@ const PostList = (prop) => {
     
     return (
         <div className={styles.container}>
-            <h1>Posts:</h1>
             {prop.posts.map(post => 
                 <div key={post.id} className={styles.post}>
                     <Post postData={post} isOpened={false} refreshPage={refreshPage} deletePost={deletePost} showError={showError}/>

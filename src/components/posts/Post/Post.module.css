@@ -4,7 +4,7 @@
     text-align: left;
     justify-content: left;
     box-shadow: var(--shadow);
-    padding: 0 1rem .5rem 1rem;
+    padding: 0 1rem 1rem 1rem;
     background-color: var(--background-color-main);
 }
 
@@ -29,20 +29,23 @@
 
 .postHolder {
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .postImageHolder {
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: var(--shadow);
+    margin-bottom: 1rem;
+    max-width: 90vw;
 }
 
 .postImage {
     display: flex;
-    max-height: 10rem;
+    max-width: 93vw;
     width: auto;
-    margin: 0rem 1rem 1rem 0rem;
-    box-shadow: var(--shadow);
 }
 
 .content::first-letter {
@@ -121,12 +124,12 @@
 }
 
 @media screen and (max-width: 600px) {
-    .postHolder {
+    /* .postHolder {
         flex-direction: column;
-    }
+    } */
     
     .postImage {
-        min-height: 18rem;
-        min-width: auto;
+        /* min-height: 18rem; */
+        /* min-width: auto; */
     }
 }

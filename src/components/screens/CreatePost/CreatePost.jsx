@@ -26,10 +26,21 @@ const CreatePost = (prop) => {
     const [imageList, setImageList] = useState([])
     const navigate = useNavigate();
     const imageListRef = ref(storage, `images/${id}/`)
+    
     const createPost = (e) => {
         e.preventDefault()
-        savePost(author ,title, post)
-        prop.refreshPage()
+        if (title.length === 0) {
+            prop.showError('"Title" can\'t be empty!')
+        }
+        
+        else if (post.length === 0) {
+            prop.showError('"Post" can\'t be empty!')
+        }
+
+        else {
+            savePost(author, title, post)
+            prop.refreshPage()
+        }
     }
 
     const handleTitle = (e) => {
@@ -60,7 +71,7 @@ const CreatePost = (prop) => {
     async function savePost(authorName, titleText, postText) {
         //Push a new post to Cloud Firestore.
         try {
-          await setDoc(doc(getFirestore(), 'posts', id), {
+            await setDoc(doc(getFirestore(), 'posts', id), {
             author: authorName,
             title: titleText,
             text: postText,
@@ -68,21 +79,21 @@ const CreatePost = (prop) => {
             timestamp: serverTimestamp(),
             id: id,
             image_url: imageUrl
-          }).then(navigate('/posts/' + id))
+            }).then(navigate('/posts/' + id))
         }
         catch(error) {
-            prop.showError(error)
+            prop.showError('Error writing new post to Firebase Database: ' + error)
             console.error('Error writing new post to Firebase Database', error)
         }
     }
 
     const uploadImage = () => {
         if (file === null) {
+            prop.showError('No file chosen!')
             return
         }
         const imageRef = ref(storage, `images/${id}/${id + file.name}`)
         uploadBytes(imageRef, file).then(() => {
-            alert('Image uploaded!')
             listAll(imageListRef).then((response) => {
                 response.items.forEach((item) => {
                     getDownloadURL(item).then((url) => {
@@ -109,13 +120,13 @@ const CreatePost = (prop) => {
                 </div>
 
                 <div className={styles.group}>
-                    <label htmlFor="create-title">Title:</label>
-                    <input type="text" name="create-title" className={styles.title} id="create-title" placeholder='Title' value={title} onChange={handleTitle}/>
+                    <label htmlFor="create-title">*Title:</label>
+                    <input type="text" name="create-title" className={styles.title} id="create-title" placeholder='Enter title' value={title} onChange={handleTitle}/>
                 </div>
 
                 <div className={styles.group}>
-                    <label htmlFor="create-post">Post:</label>
-                    <textarea type='text' className={styles.post} id='create-post' placeholder='Create new post' value={post} onChange={handlePost}/>
+                    <label htmlFor="create-post">*Post:</label>
+                    <textarea type='text' className={styles.post} id='create-post' placeholder='Enter post content' value={post} onChange={handlePost}/>
                 </div>
 
                 <div className={styles.group}>

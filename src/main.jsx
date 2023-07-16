@@ -1,4 +1,4 @@
-import React from 'react'
+//import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './main.css'
 import UserBar from './components/userBar/UserBar/UserBar.jsx'
@@ -40,9 +40,9 @@ async function authStateObserver(user) {
   }
 
   ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
+    // <React.StrictMode>
       <UserBar user={currentUser} posts={loadedData} authStateChanged={authStateChanged} deletePost={deletePost} refreshPage={refreshPage}/>
-    </React.StrictMode>
+    // </React.StrictMode>
   )
 }
 
