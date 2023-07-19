@@ -63,7 +63,7 @@ const Post = (prop) => {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.title} onClick={clickOnPostHandle}><Link to={'/posts/' + prop.postData.id}>{prop.postData.title}</Link></h2>
+            <h2 className={styles.title} onClick={clickOnPostHandle}><Link to={'/posts/' + prop.postData.id}>{prop.postData.title}&#8599;</Link></h2>
                 <div className={styles.postHolder}>
                     {prop.postData.image_url !== '' &&
                         <div className={styles.postImageHolder}>

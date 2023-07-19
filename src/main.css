@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: main, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -11,12 +11,23 @@
   --main-font: clamp(16px, calc(16px + (28 - 16) * ((100vw - 360px) / 1560)), 28px);
   --font-color: rgba(58, 50, 50, 0.747);
   --ten-percent-color: #535bf2;
-  --background-color-main: #ffffff56;
-  --background-color-block: rgb(242, 242, 247);
+  --background-color-main: #fffefe77;
+  --background-color-block: rgba(255, 255, 255, 0.89);
   --shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   --shadow-inner: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
-  --gradient: rgb(38, 57, 77) 0px 20px 30px -10px;
+  --userbar-gradient: linear-gradient(to right, #b6fbff, #83a4d4);
+  --background-gradient: linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea); 
 
+}
+
+@font-face {
+  font-family: header;
+  src: url(../fonts/Lobster-Regular.ttf);
+}
+
+@font-face {
+  font-family: main;
+  src: url(../fonts/OldStandardTT-Regular.ttf);
 }
 
 * {
@@ -27,6 +38,9 @@
 }
 
 a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
@@ -38,21 +52,23 @@ a:hover {
 body {
   margin: 0;
   min-width: 320px;
-  min-height: 90vh;
+  min-height: 99vh;
   font-size: var(--main-font);
   overflow-y: auto;
   overflow-x: hidden;
   color: var(--font-color);
-  background-color: var(--background-color-main);
-  background-image: url('/img/radiant-gradient.svg');
-  background-repeat:repeat-y;
-  background-position: top;
-  background-size: cover;
+  background-image: var(--background-gradient);
+  /* background-image: url('/img/radiant-gradient.svg');*/
+  background-position: center;
+  background-size: 100vw; 
 }
 
 h1 {
+  font-family: header;
+  text-align: center;
   font-size: 3.2em;
   line-height: 1.1;
+  margin: .5rem;
 }
 
 button {
@@ -74,7 +90,6 @@ button:hover {
 button:focus,
 button:focus-visible {
   background-color: var(--ten-percent-color);
-  outline: 1px solid;
 }
 
 p {
@@ -114,7 +129,7 @@ input:focus, textarea:focus {
   font-size: calc(var(--main-font) - 7px);
   text-align: center;
   padding: .5rem;
-  background-color: var(--background-color-block);
+  background-image: var(--userbar-gradient);
   box-shadow: var(--shadow-inner);
 }
 

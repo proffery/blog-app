@@ -10,6 +10,9 @@ import CreatePost from "../../screens/CreatePost/CreatePost"
 import Fade from 'react-reveal/Fade'
 import { PostList } from "../../screens/PostList/PostList"
 import { PostPage } from '../../screens/PostPage/PostPage'
+import {
+  getAuth
+} from 'firebase/auth'
 
 const UserBar = (prop) => {
 //console.log(prop.posts)
@@ -114,8 +117,18 @@ const UserBar = (prop) => {
           </li>
           </ul>
               <div className={styles.userStatus} onClick={openCloseUser}>
-                <img src='./img/account-details-outline.svg' alt="User slider" className={styles.userSlider} ></img>
-                {signInStatus && <p className={styles.userEmail}>{prop.user.auth.currentUser.email}</p>} 
+                {signInStatus ?
+                  (
+                    <>
+                      <img src={getAuth().currentUser.photoURL ||'./img/account-outline.svg'} alt="User slider" className={styles.userImg} ></img>
+                      <p className={styles.userEmail}>{prop.user.auth.currentUser.email}</p>
+                    </>
+                  ) : (
+                    <>
+                      <p className={styles.userLogin}>Log in</p>
+                    </>
+                  )
+                } 
               </div>
         </nav>
       </div>
