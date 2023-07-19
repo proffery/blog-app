@@ -59,7 +59,7 @@
     align-self: flex-end;
     justify-content: left;
     font-size: calc(var(--main-font) - .5rem);
-
+    font-family: italic;
 }
 
 .userName {

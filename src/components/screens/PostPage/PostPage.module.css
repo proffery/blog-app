@@ -1,18 +1,18 @@
 .container {
     display: flex;
     flex-direction: column;
-    background-color: var(--background-color-main);
-    min-height: 90vh;
+    min-height: 99vh;
+    padding: 1rem 1rem 1rem 1rem;
+    gap: 1rem;
 }
 
 .post {
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
+    transition: all ease-in .2s;
 }
 
-
-h1 {
+.header {
     display: flex;
+    flex-direction: column;
     align-self: center;
+    justify-content: center;
 }

@@ -30,6 +30,11 @@
   src: url(../fonts/OldStandardTT-Regular.ttf);
 }
 
+@font-face {
+  font-family: italic;
+  src: url(../fonts/ElMessiri-VariableFont_wght.ttf);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -55,7 +60,6 @@ body {
   overflow-x: hidden;
   color: var(--font-color);
   background-image: var(--background-gradient);
-  /* background-image: url('/img/radiant-gradient.svg');*/
   background-position: center;
   background-size: 100vw; 
 }
@@ -65,7 +69,12 @@ h1 {
   text-align: center;
   font-size: 3.2em;
   line-height: 1.1;
-  margin: .5rem;
+  height: 5rem;
+  margin: 1rem;
+}
+
+h2 {
+  font-family: italic;
 }
 
 button {

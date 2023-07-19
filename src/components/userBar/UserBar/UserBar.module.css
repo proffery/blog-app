@@ -31,6 +31,7 @@
 .register {
   margin: 1rem .5rem 0 0;
   font-size: calc(var(--main-font) - .5rem);
+  font-family: italic;
 }
 
 
@@ -191,7 +192,9 @@ input:checked + .slider:before {
   justify-content: center;
   font-size: calc(var(--main-font) - 6px);
   color: var(--ten-percent-color);
+  font-family: italic;
 }
+
 @media screen and (max-width: 600px) {
   .userEmail {
     display: none;

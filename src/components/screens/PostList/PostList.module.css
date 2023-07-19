@@ -1,18 +1,19 @@
 .container {
     display: flex;
     flex-direction: column;
-    background-color: var(--background-color-main);
-    min-height: 90vh;
+    min-height: 99vh;
     padding: 0 1rem 1rem 1rem;
+    gap: 1rem;
 }
 
 .post {
-    margin-bottom: 1rem;
     transition: all ease-in .2s;
 }
 
-h1 {
+.header {
     display: flex;
+    flex-direction: column;
     align-self: center;
+    justify-content: center;
 }
 

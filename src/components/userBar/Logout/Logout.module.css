@@ -33,6 +33,7 @@
     margin: 0;
     font-size: calc(var(--main-font) - .5rem);
     text-align: center;
+    font-family: italic;
 }
 
 @media screen and (max-width: 600px) {
