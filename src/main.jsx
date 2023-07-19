@@ -19,6 +19,8 @@ import {
   doc
 } from 'firebase/firestore'
 
+import { getStorage, ref, deleteObject, listAll } from "firebase/storage";
+
 function initFirebaseAuth() {
   // Subscribe to the user's signed-in status
   onAuthStateChanged(getAuth(), authStateObserver);
@@ -47,11 +49,28 @@ async function authStateObserver(user) {
 }
 
 const deletePost = async(id) => {
-  console.log(id)
   const db = getFirestore()
   const docRef = doc(db, "posts", id)
-  deleteDoc(docRef).then(() => { loadData() })
-    .catch(error => { console.log(error) 
+  deleteDoc(docRef).then(() => { deleteAllImages(id) })
+  .catch(error => { console.log(error) })
+}
+
+const deleteAllImages = async(id) => {
+  const storage = getStorage()
+  const listRef = ref(storage, `images/${id}`);
+    await listAll(listRef)
+    .then((image) => {
+      image.items.forEach((item) => {
+      deleteFromFirebase(item._location.path_)
+    })
+  })
+}
+
+const deleteFromFirebase = async(url) => {
+  await deleteObject(ref(getStorage(), url)).then(() => {
+    console.log(url + ' is deleted!')
+  }).catch((error) => {
+    console.log(error)
   })
 }
 
@@ -68,7 +87,7 @@ async function loadData() {
 const refreshPage = () => {
   const timer = setTimeout(() => {
       window.location.reload(true)
-    }, 200);
+    }, 10000);
     return () => clearTimeout(timer);
 }
 

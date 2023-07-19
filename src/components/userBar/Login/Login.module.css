@@ -28,7 +28,8 @@
 
 .loginSymbol {
     display: none;
-    width: 2rem;
+    width: 1rem;
+    filter: saturate(100);
 }
 
 @media screen and (max-width: 600px) {

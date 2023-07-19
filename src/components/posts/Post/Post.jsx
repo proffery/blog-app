@@ -14,6 +14,8 @@ const Post = (prop) => {
     const [readButtonText, setReadButtonText] = useState('Read more')
     const [readButtonStat, setReadButtonStat] = useState(prop.isOpened)
     const [commentsNumber, setCommentsNumber] = useState(0)
+    // eslint-disable-next-line no-unused-vars
+    const [readMoreButtonVisibility, setReadMoreButtonVisibility] = useState(prop.readMoreVisibility)
     const navigate = useNavigate()
 
     const deletePost = (e) => {
@@ -21,7 +23,8 @@ const Post = (prop) => {
         e.stopPropagation()
         e.nativeEvent.stopImmediatePropagation()
         prop.deletePost(prop.postData.id)
-        prop.refreshPage()
+        navigate('/')
+        //prop.refreshPage()
     }
 
     const refreshPage = () => {
@@ -88,7 +91,9 @@ const Post = (prop) => {
                     </div>
                 </>
             }
-            <button className={styles.readMore} onClick={readMoreHandler}>{readButtonText}</button>
+            {readMoreButtonVisibility && 
+                <button className={styles.readMore} onClick={readMoreHandler}>{readButtonText}</button>
+            }
             <div className={styles.userInfo}>Posted
                 {' ' + new Date(prop.postData.timestamp.seconds * 1000).toLocaleString("ru-RU", {dateStyle: "short"}) + ', ' + 
                     new Date(prop.postData.timestamp.seconds * 1000).toLocaleTimeString("ru-Ru") + ' '
@@ -97,7 +102,7 @@ const Post = (prop) => {
                     <img className={styles.img} src={prop.postData.profilePicUrl} alt='User avatar' />
                     <b className={styles.userName}>{prop.postData.author}</b>
                     {commentsNumber > 0 && 
-                        <div className={styles.commensNumber} onClick={readMoreHandler}>
+                        <div className={styles.commensNumber}>
                             <img className={styles.img} src='./img/comment-outline.svg' alt='Comments' />{commentsNumber}
                         </div>
                     }

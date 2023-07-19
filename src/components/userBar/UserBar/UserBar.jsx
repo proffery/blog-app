@@ -13,6 +13,7 @@ import { PostPage } from '../../screens/PostPage/PostPage'
 import {
   getAuth
 } from 'firebase/auth'
+import { Home } from "../../screens/Home/Home"
 
 const UserBar = (prop) => {
 //console.log(prop.posts)
@@ -133,9 +134,9 @@ const UserBar = (prop) => {
         </nav>
       </div>
       <Routes>
-      <Route path='/' element={<PostList posts={prop.posts} deletePost={deletePost} refreshPage={refreshPage} showError={showError}/>} />
+      <Route path='/' element={<Home posts={prop.posts} deletePost={deletePost} refreshPage={refreshPage} showError={showError}/>} />
       <Route path='/posts' element={<PostList posts={prop.posts} deletePost={deletePost} refreshPage={refreshPage} showError={showError}/>} />
-      <Route path='/posts/:id' element={<PostPage refreshPage={refreshPage} posts={prop.posts} showError={showError}/>} />
+      <Route path='/posts/:id' element={<PostPage refreshPage={refreshPage} posts={prop.posts} deletePost={deletePost} showError={showError}/>} />
         {!signInStatus ? 
           <Route path='/register' element={<Register showError={showError}/>} /> :
           (isAdmin && 

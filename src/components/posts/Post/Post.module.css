@@ -4,7 +4,7 @@
     text-align: left;
     justify-content: left;
     box-shadow: var(--shadow);
-    padding: 0 1rem 1rem 1rem;
+    padding: 1rem;
     background-color: var(--background-color-main);
 }
 
@@ -17,15 +17,17 @@
 .content {
     display: -webkit-box;
     justify-content: left;
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-align: left;
+    margin-bottom: .5rem;
 }
 
 .content.expanded {
     -webkit-line-clamp: unset;
 }
+
 
 .postHolder {
     display: flex;
@@ -39,22 +41,15 @@
     justify-content: center;
     box-shadow: var(--shadow);
     margin-bottom: 1rem;
-    max-width: 90vw;
 }
 
 .postImage {
     display: flex;
-    max-width: 93vw;
-    width: auto;
-}
-
-.content::first-letter {
-    font-weight: 900;
-    text-transform: capitalize;
+    width: 100%;
 }
 
 .readMore {
-    margin-top: .5rem;
+    margin-top: 1rem;
     align-self: flex-start;
 }
 

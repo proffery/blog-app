@@ -30,3 +30,8 @@ textarea {
     margin-bottom: .5rem;
     resize: vertical;
 }
+
+button {
+    width: fit-content;
+    align-self: center;
+}

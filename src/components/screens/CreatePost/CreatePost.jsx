@@ -106,7 +106,6 @@ const CreatePost = (prop) => {
     }
 
     const onImageFocus = (e) => {
-        console.log(e)
         setImageUrl(e.target.currentSrc)
     }
 

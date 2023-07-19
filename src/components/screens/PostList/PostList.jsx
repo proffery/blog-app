@@ -22,7 +22,14 @@ const PostList = (prop) => {
             <h1>All blog posts</h1>
             {prop.posts.map(post => 
                 <div key={post.id} className={styles.post}>
-                    <Post postData={post} isOpened={false} refreshPage={refreshPage} deletePost={deletePost} showError={showError}/>
+                    <Post 
+                        postData={post} 
+                        isOpened={false} 
+                        readMoreVisibility={true}
+                        refreshPage={refreshPage} 
+                        deletePost={deletePost} 
+                        showError={showError}
+                    />
                 </div>
             )}
         </div>
