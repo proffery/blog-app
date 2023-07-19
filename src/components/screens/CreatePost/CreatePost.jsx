@@ -130,7 +130,7 @@ const CreatePost = (prop) => {
                 </div>
 
                 <div className={styles.group}>
-                    <label htmlFor="post-image">Post image URL</label>
+                    <label htmlFor="post-image">Post image URL:</label>
                     <textarea type="text" name="post-image" className={styles.title} id="post-image" placeholder='Click on uploaded image for choose' rows={3} value={imageUrl} onChange={handleUrl} readOnly/>
                 </div>
                 

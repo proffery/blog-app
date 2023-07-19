@@ -110,9 +110,6 @@
 
 .addComment {
     display: flex;
-    margin: .5rem;
-    align-items: center;
-    align-self: center;
     z-index: 1;
 }
 

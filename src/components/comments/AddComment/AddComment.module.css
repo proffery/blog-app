@@ -3,6 +3,8 @@
     align-self: center;
     align-items: center;
     justify-content: center;
+    height: 100%;
+    width: 100%;
     z-index: 0;
 }
 
@@ -20,8 +22,6 @@
     flex-direction: column;
     margin-bottom: .5rem;
     text-align: left;
-    width: clamp(200px, 25rem, 80vw); 
-    padding: .5rem;
 }
 
 textarea {

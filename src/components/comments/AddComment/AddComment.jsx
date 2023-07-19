@@ -49,7 +49,7 @@ const AddComment = (prop) => {
           .then(navigate(`/posts/${prop.postData.id}`))
         }
         catch(error) {
-            prop.showError(error)
+            prop.showError('Error add comment to Firebase Database: ' + error)
             console.error('Error add comment to Firebase Database', error)
         }
     }

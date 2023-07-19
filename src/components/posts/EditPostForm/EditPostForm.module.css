@@ -47,6 +47,11 @@ input, textarea {
     color: var(--font-color);
 }
 
+input::placeholder, textarea::placeholder {
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
 .images {
     display: flex;
     flex-wrap: wrap;

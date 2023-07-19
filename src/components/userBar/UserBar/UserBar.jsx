@@ -109,6 +109,9 @@ const UserBar = (prop) => {
               </li>
             }
           {/* DEMO MODE END!!! */}
+          <li>
+            <h1 className={styles.empty}></h1>
+          </li>
           </ul>
               <div className={styles.userStatus} onClick={openCloseUser}>
                 <img src='./img/account-details-outline.svg' alt="User slider" className={styles.userSlider} ></img>
