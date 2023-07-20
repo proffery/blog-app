@@ -55,7 +55,8 @@ const Register = (prop) => {
 
     return (
         <div className={styles.container}>
-            <form onSubmit={registerSubmitHamdle}>
+            <h1 className={styles.header}>Register</h1>
+            <form className={styles.form} onSubmit={registerSubmitHamdle}>
                 <div className={styles.group}>
                     <label htmlFor="register-email">E-mail:</label>
                     <input type="text" name="register-email" id="register-email" placeholder='Enter email' value={email} onChange={emailHandle}/>
@@ -69,7 +70,7 @@ const Register = (prop) => {
                     <input type="password" name="register-password-repeat" id="register-password-repeat" placeholder='Repeat password' value={passwordRepeat} onChange={passwordRepeatHandle}/>
                 </div>
                 <div className={styles.group}>
-                    <button type="submit">Register</button>
+                    <button type="submit">Submit</button>
                 </div>
             </form>
         </div>

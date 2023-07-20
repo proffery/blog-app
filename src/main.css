@@ -137,6 +137,7 @@ input:focus, textarea:focus {
   padding: .5rem;
   background-image: var(--userbar-gradient);
   box-shadow: var(--shadow-inner);
+  z-index: -1;
 }
 
 .footer p {

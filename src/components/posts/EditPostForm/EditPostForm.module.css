@@ -5,6 +5,7 @@
     padding: 1rem;
     background-color: var(--background-color-block);
     box-shadow: var(--shadow);
+    z-index: 999;
 }
 
 .form {
