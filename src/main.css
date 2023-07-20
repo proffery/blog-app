@@ -11,12 +11,12 @@
   --main-font: clamp(16px, calc(16px + (28 - 16) * ((100vw - 360px) / 1560)), 28px);
   --font-color: rgba(58, 50, 50, 0.747);
   --ten-percent-color: #535bf2;
-  --background-color-main: #fffefe77;
-  --background-color-block: rgba(255, 255, 255, 0.89);
+  --background-color-main: #fffefe;
+  --background-color-block: rgb(255, 255, 255);
   --shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   --shadow-inner: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
   --userbar-gradient: linear-gradient(to right, #b6fbff, #83a4d4);
-  --background-gradient: linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea); 
+  --background-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 
 }
 
@@ -32,7 +32,7 @@
 
 @font-face {
   font-family: italic;
-  src: url(../fonts/ElMessiri-VariableFont_wght.ttf);
+  src: url(../fonts/Lobster-Regular.ttf);
 }
 
 * {

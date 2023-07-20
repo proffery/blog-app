@@ -47,7 +47,7 @@ const CommentList = (prop) => {
                             <p className={styles.text}>{comment.text}</p>
                         </div>
                         <div className={styles.date}>Commented:
-                            {' ' + new Date(comment.timestamp.seconds * 1000).toLocaleString("eu-EU", {dateStyle: "medium"}) + ', ' + 
+                            {' ' + new Date(comment.timestamp.seconds * 1000).toLocaleString("ru-RU", {dateStyle: "short"}) + ', ' + 
                                 new Date(comment.timestamp.seconds * 1000).toLocaleTimeString("ru-Ru")
                             } 
                             {!!getAuth().currentUser && (getAuth().currentUser.email === comment.author && (comment.text !== '*DELETED*' &&

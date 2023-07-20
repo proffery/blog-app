@@ -14,6 +14,7 @@ import {
   getAuth
 } from 'firebase/auth'
 import { Home } from "../../screens/Home/Home"
+import { About } from "../../screens/About/About"
 
 const UserBar = (prop) => {
 //console.log(prop.posts)
@@ -145,6 +146,7 @@ const UserBar = (prop) => {
           </>
           )
         }
+        <Route path='/about' element={<About />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </HashRouter>

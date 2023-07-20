@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: top;
+    min-height: 90vh;
+    padding: 0 1rem 1rem 1rem;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+}
+
+.paragraph {
+    display: inline;
+}
+
+.paragraph::first-letter {
+    font-family: italic;
+}
