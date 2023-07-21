@@ -15,15 +15,20 @@
     grid-row: 1 / 2;
 }
 
+.lastThreeContainer {
+    display: flex;
+    background-color: var(--background-color-main);
+    box-shadow: var(--shadow);
+    padding: 1rem;
+    gap: 1rem;
+}
+
 .vertical {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
-.vertical div {
-    display: flex;
-    flex-direction: column;
-}
 
 .horisontal {
     display: flex;
@@ -57,7 +62,7 @@
 .postImageHolder {
     display: flex;
     align-items: center;
-    justify-content: left;
+    width: 50%;
 }
 
 .lastPostImage {
@@ -75,7 +80,7 @@
 .content {
     display: -webkit-box;
     justify-content: left;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-align: left;

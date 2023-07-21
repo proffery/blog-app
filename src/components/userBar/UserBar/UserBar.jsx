@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { HashRouter, Routes, Route, NavLink } from 'react-router-dom'
+import { HashRouter, Routes, Route, NavLink, Link } from 'react-router-dom'
 import styles from './UserBar.module.css'
 import './ActiveLink.css'
 import Login from "../Login/Login"
@@ -69,7 +69,7 @@ const UserBar = (prop) => {
                 <Login prop={prop.user} authStateChanged={authStateChanged} showError={showError}/>
                 <div className={styles.register}> 
                   <em>Don’t have an account? Register</em>
-                  <NavLink to='/register'>here</NavLink>
+                  <Link to='/register'>here</Link>
                 </div>
               </div>
             </Fade>

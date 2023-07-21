@@ -20,4 +20,5 @@
 
 .paragraph::first-letter {
     font-family: italic;
+    font-size: calc(var(--main-font) + .3rem);
 }

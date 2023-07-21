@@ -28,3 +28,16 @@
     margin: .5rem;
     width: clamp(200px, 25rem, 80vw); 
 }
+
+input, textarea {
+    color: var(--font-color);
+}
+
+input::placeholder, textarea::placeholder {
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+label {
+
+}

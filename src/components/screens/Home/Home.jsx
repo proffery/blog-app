@@ -1,9 +1,12 @@
 import { Post } from '../../posts/Post/Post'
 import styles from './Home.module.css'
-import { Link,  } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Flip, Bounce } from 'react-reveal/'
 
 const Home = (prop) => {
+
+    const navigate = useNavigate()
+
     const deletePost = (id) => {
         prop.deletePost(id)
         prop.refreshPage()
@@ -39,27 +42,27 @@ const Home = (prop) => {
             {prop.posts.length > 1 &&
                 <Bounce right cascade>
                 <div className={styles.lastThreePosts}>
-                        <div className={styles.horisontal}>
+                        <div className={styles.lastThreeContainer} onClick={() => {navigate('/posts/'+ prop.posts[1].id) }}>
                             {prop.posts[1].image_url !== '' &&
                                 <div className={styles.postImageHolder}>
                                     <img className={styles.lastThreePostImage} src={prop.posts[1].image_url} alt="Post image" />
                                 </div>
                             }
                             <div className={styles.vertical}>
-                            <div>
-                                <h2 className={styles.title}><Link to={'/posts/' + prop.posts[1].id}>{prop.posts[1].title}&#8599;</Link></h2>
-                                <p className={styles.content}>{prop.posts[1].text}</p>
+                                <div>
+                                    <h2 className={styles.title}><Link to={'/posts/' + prop.posts[1].id}>{prop.posts[1].title}&#8599;</Link></h2>
+                                    <p className={styles.content}>{prop.posts[1].text}</p>
+                                </div>
+                                <div className={styles.userInfo}>Posted
+                                    {' ' + new Date(prop.posts[1].timestamp.seconds * 1000).toLocaleString("ru-RU", {dateStyle: "short"}) + ', ' + 
+                                            new Date(prop.posts[1].timestamp.seconds * 1000).toLocaleTimeString("ru-Ru") + ' '
+                                        }
+                                </div>
                             </div>
-                            <div className={styles.userInfo}>Posted
-                                {' ' + new Date(prop.posts[1].timestamp.seconds * 1000).toLocaleString("ru-RU", {dateStyle: "short"}) + ', ' + 
-                                        new Date(prop.posts[1].timestamp.seconds * 1000).toLocaleTimeString("ru-Ru") + ' '
-                                    }
-                            </div>
-                        </div>
                         </div>
                     {prop.posts.length > 2 &&
                      
-                    <div className={styles.horisontal}>
+                    <div className={styles.lastThreeContainer} onClick={() => {navigate('/posts/'+ prop.posts[2].id) }}>
                                 {prop.posts[2].image_url !== '' &&
                                     <div className={styles.postImageHolder}>
                                         <img className={styles.lastThreePostImage} src={prop.posts[2].image_url} alt="Post image" />
@@ -80,7 +83,7 @@ const Home = (prop) => {
                     }
 
                     {prop.posts.length > 3 &&
-                        <div className={styles.horisontal}>
+                        <div className={styles.lastThreeContainer} onClick={() => {navigate('/posts/'+ prop.posts[3].id) }}>
                                     {prop.posts[3].image_url !== '' &&
                                         <div className={styles.postImageHolder}>
                                             <img className={styles.lastThreePostImage} src={prop.posts[3].image_url} alt="Post image" />
